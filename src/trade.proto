@@ -12,7 +12,7 @@ service ToCSinopacBackEnd {
 }
 
 message RequestTime {
-    int64 request_timestamp = 1;
+    int64 timestamp = 1;
 }
 
 message Echo {
@@ -21,7 +21,7 @@ message Echo {
 
 message StockDetailResponse {
     repeated StockDetailMessage stock = 1;
-    RequestTime request_timestamp     = 2;
+    int64 req_timestamp               = 2;
 }
 
 message StockDetailMessage {
