@@ -5,12 +5,23 @@ package toc_machine_trading;
 option go_package = "pkg/pb";
 
 service ToCSinopacBackEnd {
+    // for go side to check python alive
     rpc HealthCheck(Echo) returns (Echo) {}
-    rpc GetAllStockDetail(Request) returns (StockDetailResponse) {}
+    // Get all stock detail
+    rpc GetAllStockDetail(RequestTime) returns (StockDetailResponse) {}
+}
+
+message RequestTime {
+    int64 request_timestamp = 1;
+}
+
+message Echo {
+    string message = 1;
 }
 
 message StockDetailResponse {
     repeated StockDetailMessage stock = 1;
+    RequestTime request_timestamp     = 2;
 }
 
 message StockDetailMessage {
@@ -21,12 +32,4 @@ message StockDetailMessage {
     double reference   = 5;
     string update_date = 6;
     string day_trade   = 7;
-}
-
-message Request {
-    int64 timestamp = 1;
-}
-
-message Echo {
-    string message = 1;
 }
