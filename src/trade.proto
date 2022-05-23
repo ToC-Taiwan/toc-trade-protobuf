@@ -2,13 +2,25 @@ syntax = "proto3";
 
 package toc_machine_trading;
 
-import "src/basic_data.proto";
-
 option go_package = "pkg/pb";
 
 service ToCSinopacBackEnd {
     rpc HealthCheck(Echo) returns (Echo) {}
     rpc GetAllStockDetail(Request) returns (StockDetailResponse) {}
+}
+
+message StockDetailResponse {
+    repeated StockDetailMessage stock = 1;
+}
+
+message StockDetailMessage {
+    string exchange    = 1;
+    string category    = 2;
+    string code        = 3;
+    string name        = 4;
+    double reference   = 5;
+    string update_date = 6;
+    string day_trade   = 7;
 }
 
 message Request {
