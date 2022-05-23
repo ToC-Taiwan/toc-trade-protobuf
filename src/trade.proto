@@ -5,10 +5,9 @@ package toc_machine_trading;
 option go_package = "pkg/pb";
 
 service ToCSinopacBackEnd {
-    // for go side to check python alive
     rpc HealthCheck(Echo) returns (Echo) {}
-    // Get all stock detail
     rpc GetAllStockDetail(RequestTime) returns (StockDetailResponse) {}
+    rpc GetAllSnapshot(RequestTime) returns (SnapshotResponse) {}
 }
 
 message RequestTime {
@@ -32,4 +31,33 @@ message StockDetailMessage {
     double reference   = 5;
     string update_date = 6;
     string day_trade   = 7;
+}
+
+message SnapshotResponse {
+    repeated SnapshotMessage data = 1;
+}
+
+message SnapshotMessage {
+    int64 ts                = 1;
+    string code             = 2;
+    string exchange         = 3;
+    double open             = 4;
+    double high             = 5;
+    double low              = 6;
+    double close            = 7;
+    string tick_type        = 8;
+    double change_price     = 9;
+    double change_rate      = 10;
+    string change_type      = 11;
+    double average_price    = 12;
+    int64 volume            = 13;
+    int64 total_volume      = 14;
+    int64 amount            = 15;
+    int64 total_amount      = 16;
+    double yesterday_volume = 17;
+    double buy_price        = 18;
+    double buy_volume       = 19;
+    double sell_price       = 20;
+    int64 sell_volume       = 21;
+    double volume_ratio     = 22;
 }
