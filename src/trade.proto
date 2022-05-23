@@ -2,6 +2,8 @@ syntax = "proto3";
 
 package helloworld;
 
+option go_package = "pkg/pb";
+
 service ToCSinopacBackEnd {
     rpc HealthCheck(Echo) returns (Echo) {}
 }
