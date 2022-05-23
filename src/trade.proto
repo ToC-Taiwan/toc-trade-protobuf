@@ -7,7 +7,7 @@ option go_package = "pkg/pb";
 service ToCSinopacBackEnd {
     rpc HealthCheck(Echo) returns (Echo) {}
     rpc GetAllStockDetail(RequestTime) returns (StockDetailResponse) {}
-    rpc GetAllSnapshot(RequestTime) returns (SnapshotResponse) {}
+    rpc GetAllStockSnapshot(RequestTime) returns (StockSnapshotResponse) {}
 }
 
 message RequestTime {
@@ -33,12 +33,12 @@ message StockDetailMessage {
     string day_trade   = 7;
 }
 
-message SnapshotResponse {
-    repeated SnapshotMessage data = 1;
-    int64 req_timestamp           = 2;
+message StockSnapshotResponse {
+    repeated StockSnapshotMessage data = 1;
+    int64 req_timestamp                = 2;
 }
 
-message SnapshotMessage {
+message StockSnapshotMessage {
     int64 ts                = 1;
     string code             = 2;
     string exchange         = 3;
