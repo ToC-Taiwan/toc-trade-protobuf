@@ -65,5 +65,6 @@ message StockSnapshotMessage {
 }
 
 message StockNumArr {
-    repeated string stock_num_arr = 1;
+    int64 timestamp               = 1;
+    repeated string stock_num_arr = 2;
 }
