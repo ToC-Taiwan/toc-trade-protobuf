@@ -12,6 +12,7 @@ service ToCSinopacBackEnd {
     rpc GetStockSnapshotTSE(RequestTime) returns (StockSnapshotResponse) {}
 
     rpc GetStockSnapshotByNumArr(StockNumArr) returns (StockSnapshotResponse) {}
+    rpc GetStockHistoryTick(StockNum) returns (StockHistoryTickResponse) {}
 }
 
 message RequestTime {
@@ -72,14 +73,19 @@ message StockNumArr {
     repeated string stock_num_arr = 2;
 }
 
-message HistoryTickResponse {
-    string stock_num                 = 1;
-    string date                      = 2;
-    repeated HistoryTickMessage data = 3;
-    int64 req_timestamp              = 4;
+message StockNum {
+    int64 timestamp  = 1;
+    string stock_num = 2;
 }
 
-message HistoryTickMessage {
+message StockHistoryTickResponse {
+    string stock_num                      = 1;
+    string date                           = 2;
+    repeated StockHistoryTickMessage data = 3;
+    int64 req_timestamp                   = 4;
+}
+
+message StockHistoryTickMessage {
     int64 ts         = 1;
     double close     = 2;
     int64 volume     = 3;
