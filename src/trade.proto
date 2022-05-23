@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package helloworld;
+
+service ToCSinopacBackEnd {
+    rpc HealthCheck(Echo) returns (Echo) {}
+}
+
+message Echo {
+    string message = 1;
+}
