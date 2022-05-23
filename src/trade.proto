@@ -5,7 +5,7 @@ package toc_machine_trading;
 option go_package = "pkg/pb";
 
 service ToCSinopacBackEnd {
-    rpc HealthCheck(Echo) returns (Echo) {}
+    rpc HealthCheck(RequestTime) returns (Token) {}
 
     rpc GetAllStockDetail(RequestTime) returns (StockDetailResponse) {}
     rpc GetAllStockSnapshot(RequestTime) returns (StockSnapshotResponse) {}
@@ -19,7 +19,7 @@ message RequestTime {
     int64 timestamp = 1;
 }
 
-message Echo {
+message Token {
     string message = 1;
 }
 
