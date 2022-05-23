@@ -8,6 +8,7 @@ service ToCSinopacBackEnd {
     rpc HealthCheck(Echo) returns (Echo) {}
     rpc GetAllStockDetail(RequestTime) returns (StockDetailResponse) {}
     rpc GetAllStockSnapshot(RequestTime) returns (StockSnapshotResponse) {}
+    rpc GetStockSnapshotByNumArr(StockNumArr) returns (StockSnapshotResponse) {}
 }
 
 message RequestTime {
@@ -61,4 +62,8 @@ message StockSnapshotMessage {
     double sell_price       = 20;
     int64 sell_volume       = 21;
     double volume_ratio     = 22;
+}
+
+message StockNumArr {
+    repeated string stock_num = 1;
 }
