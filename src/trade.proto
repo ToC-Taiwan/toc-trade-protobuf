@@ -75,9 +75,9 @@ message StockNumArr {
 }
 
 message StockNumArrWithDate {
-    int64 timestamp           = 1;
-    repeated string stock_num = 2;
-    string date               = 3;
+    int64 timestamp               = 1;
+    repeated string stock_num_arr = 2;
+    string date                   = 3;
 }
 
 message StockHistoryTickResponse {
