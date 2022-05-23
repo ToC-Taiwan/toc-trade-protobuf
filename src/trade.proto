@@ -81,10 +81,9 @@ message StockNumArrWithDate {
 }
 
 message StockHistoryTickResponse {
-    string stock_num                      = 1;
-    string date                           = 2;
-    repeated StockHistoryTickMessage data = 3;
-    int64 req_timestamp                   = 4;
+    string date                           = 1;
+    repeated StockHistoryTickMessage data = 2;
+    int64 req_timestamp                   = 3;
 }
 
 message StockHistoryTickMessage {
