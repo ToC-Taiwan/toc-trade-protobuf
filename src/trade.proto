@@ -6,8 +6,11 @@ option go_package = "pkg/pb";
 
 service ToCSinopacBackEnd {
     rpc HealthCheck(Echo) returns (Echo) {}
+
     rpc GetAllStockDetail(RequestTime) returns (StockDetailResponse) {}
     rpc GetAllStockSnapshot(RequestTime) returns (StockSnapshotResponse) {}
+    rpc GetStockSnapshotTSE(RequestTime) returns (StockSnapshotResponse) {}
+
     rpc GetStockSnapshotByNumArr(StockNumArr) returns (StockSnapshotResponse) {}
 }
 
@@ -67,4 +70,21 @@ message StockSnapshotMessage {
 message StockNumArr {
     int64 timestamp               = 1;
     repeated string stock_num_arr = 2;
+}
+
+message HistoryTickResponse {
+    string stock_num                 = 1;
+    string date                      = 2;
+    repeated HistoryTickMessage data = 3;
+}
+
+message HistoryTickMessage {
+    int64 ts         = 1;
+    double close     = 2;
+    int64 volume     = 3;
+    double bid_price = 4;
+    int64 bid_volume = 5;
+    double ask_price = 6;
+    int64 ask_volume = 7;
+    int64 tick_type  = 8;
 }
