@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package helloworld;
+package toc_machine_trading;
 
 option go_package = "pkg/pb";
 
