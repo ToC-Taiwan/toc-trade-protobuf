@@ -12,8 +12,10 @@ service ToCSinopacBackEnd {
     rpc GetStockSnapshotTSE(RequestTime) returns (StockSnapshotResponse) {}
 
     rpc GetStockSnapshotByNumArr(StockNumArr) returns (StockSnapshotResponse) {}
+
     rpc GetStockHistoryTick(StockNumArrWithDate) returns (StockHistoryTickResponse) {}
     rpc GetStockHistoryKbar(StockNumArrWithDate) returns (StockHistoryKbarResponse) {}
+    rpc GetStockHistoryClose(StockNumArrWithDate) returns (StockHistoryCloseResponse) {}
 }
 
 message RequestTime {
