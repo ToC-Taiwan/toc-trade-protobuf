@@ -13,6 +13,7 @@ service ToCSinopacBackEnd {
 
     rpc GetStockSnapshotByNumArr(StockNumArr) returns (StockSnapshotResponse) {}
     rpc GetStockHistoryTick(StockNumArrWithDate) returns (StockHistoryTickResponse) {}
+    rpc GetStockHistoryKbar(StockNumArrWithDate) returns (StockHistoryKbarResponse) {}
 }
 
 message RequestTime {
@@ -22,6 +23,17 @@ message RequestTime {
 message TokenResponse {
     string message      = 1;
     int64 req_timestamp = 2;
+}
+
+message StockNumArr {
+    int64 timestamp               = 1;
+    repeated string stock_num_arr = 2;
+}
+
+message StockNumArrWithDate {
+    int64 timestamp               = 1;
+    repeated string stock_num_arr = 2;
+    string date                   = 3;
 }
 
 message StockDetailResponse {
@@ -69,21 +81,9 @@ message StockSnapshotMessage {
     double volume_ratio     = 22;
 }
 
-message StockNumArr {
-    int64 timestamp               = 1;
-    repeated string stock_num_arr = 2;
-}
-
-message StockNumArrWithDate {
-    int64 timestamp               = 1;
-    repeated string stock_num_arr = 2;
-    string date                   = 3;
-}
-
 message StockHistoryTickResponse {
-    string date                           = 1;
-    repeated StockHistoryTickMessage data = 2;
-    int64 req_timestamp                   = 3;
+    repeated StockHistoryTickMessage data = 1;
+    int64 req_timestamp                   = 2;
 }
 
 message StockHistoryTickMessage {
@@ -96,4 +96,19 @@ message StockHistoryTickMessage {
     int64 ask_volume = 7;
     int64 tick_type  = 8;
     string stock_num = 9;
+}
+
+message StockHistoryKbarResponse {
+    repeated StockHistoryKbarMessage data = 1;
+    int64 req_timestamp                   = 2;
+}
+
+message StockHistoryKbarMessage {
+    int64 ts         = 1;
+    double Close     = 2;
+    double Open      = 3;
+    double High      = 4;
+    double Low       = 5;
+    int64 Volume     = 6;
+    string stock_num = 7;
 }
