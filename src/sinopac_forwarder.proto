@@ -1,46 +1,38 @@
 syntax = "proto3";
-
-package toc_machine_trading;
-
+package sinopac_forwarder;
+import "google/protobuf/empty.proto";
 option go_package = "pkg/pb";
 
-service ToCSinopacBackEnd {
-    rpc HealthCheck(RequestTime) returns (TokenResponse) {}
+service SinopacForwarder {
+    rpc GetServerToken(google.protobuf.Empty) returns (TokenResponse) {}
 
-    rpc GetAllStockDetail(RequestTime) returns (StockDetailResponse) {}
-    rpc GetAllStockSnapshot(RequestTime) returns (StockSnapshotResponse) {}
-    rpc GetStockSnapshotTSE(RequestTime) returns (StockSnapshotResponse) {}
+    rpc GetAllStockDetail(google.protobuf.Empty) returns (StockDetailResponse) {}
+    rpc GetAllStockSnapshot(google.protobuf.Empty) returns (StockSnapshotResponse) {}
+    rpc GetStockSnapshotTSE(google.protobuf.Empty) returns (StockSnapshotResponse) {}
+
+    rpc GetStockVolumeRank(VolumeRankRequest) returns (StockVolumeRankResponse) {}
 
     rpc GetStockSnapshotByNumArr(StockNumArr) returns (StockSnapshotResponse) {}
-
     rpc GetStockHistoryTick(StockNumArrWithDate) returns (StockHistoryTickResponse) {}
     rpc GetStockHistoryKbar(StockNumArrWithDate) returns (StockHistoryKbarResponse) {}
     rpc GetStockHistoryClose(StockNumArrWithDate) returns (StockHistoryCloseResponse) {}
 }
 
-message RequestTime {
-    int64 timestamp = 1;
-}
-
 message TokenResponse {
-    string message      = 1;
-    int64 req_timestamp = 2;
+    string token = 1;
 }
 
 message StockNumArr {
-    int64 timestamp               = 1;
-    repeated string stock_num_arr = 2;
+    repeated string stock_num_arr = 1;
 }
 
 message StockNumArrWithDate {
-    int64 timestamp               = 1;
-    repeated string stock_num_arr = 2;
-    string date                   = 3;
+    repeated string stock_num_arr = 1;
+    string date                   = 2;
 }
 
 message StockDetailResponse {
     repeated StockDetailMessage stock = 1;
-    int64 req_timestamp               = 2;
 }
 
 message StockDetailMessage {
@@ -55,7 +47,6 @@ message StockDetailMessage {
 
 message StockSnapshotResponse {
     repeated StockSnapshotMessage data = 1;
-    int64 req_timestamp                = 2;
 }
 
 message StockSnapshotMessage {
@@ -85,7 +76,6 @@ message StockSnapshotMessage {
 
 message StockHistoryTickResponse {
     repeated StockHistoryTickMessage data = 1;
-    int64 req_timestamp                   = 2;
 }
 
 message StockHistoryTickMessage {
@@ -102,7 +92,6 @@ message StockHistoryTickMessage {
 
 message StockHistoryKbarResponse {
     repeated StockHistoryKbarMessage data = 1;
-    int64 req_timestamp                   = 2;
 }
 
 message StockHistoryKbarMessage {
@@ -117,11 +106,49 @@ message StockHistoryKbarMessage {
 
 message StockHistoryCloseResponse {
     repeated StockHistoryCloseMessage data = 1;
-    int64 req_timestamp                    = 2;
 }
 
 message StockHistoryCloseMessage {
     string date  = 1;
     string code  = 2;
     double close = 3;
+}
+
+message VolumeRankRequest {
+    int64 count = 1;
+    string date = 2;
+}
+
+message StockVolumeRankResponse {
+    repeated StockVolumeRankMessage data = 1;
+}
+
+message StockVolumeRankMessage {
+    string date            = 1;
+    string code            = 2;
+    string name            = 3;
+    int64 ts               = 4;
+    double open            = 5;
+    double high            = 6;
+    double low             = 7;
+    double close           = 8;
+    double price_range     = 9;
+    int64 tick_type        = 10;
+    double change_price    = 11;
+    int64 change_type      = 12;
+    double average_price   = 13;
+    int64 volume           = 14;
+    int64 total_volume     = 15;
+    int64 amount           = 16;
+    int64 total_amount     = 17;
+    int64 yesterday_volume = 18;
+    double volume_ratio    = 19;
+    double buy_price       = 20;
+    int64 buy_volume       = 21;
+    double sell_price      = 22;
+    int64 sell_volume      = 23;
+    int64 bid_orders       = 24;
+    int64 bid_volumes      = 25;
+    int64 ask_orders       = 26;
+    int64 ask_volumes      = 27;
 }
