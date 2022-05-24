@@ -112,3 +112,14 @@ message StockHistoryKbarMessage {
     int64 Volume     = 6;
     string stock_num = 7;
 }
+
+message StockHistoryCloseResponse {
+    repeated StockHistoryCloseMessage data = 1;
+    int64 req_timestamp                    = 2;
+}
+
+message StockHistoryCloseMessage {
+    string date  = 1;
+    string code  = 2;
+    double close = 3;
+}
