@@ -16,6 +16,9 @@ service SinopacForwarder {
     rpc GetStockHistoryTick(StockNumArrWithDate) returns (StockHistoryTickResponse) {}
     rpc GetStockHistoryKbar(StockNumArrWithDate) returns (StockHistoryKbarResponse) {}
     rpc GetStockHistoryClose(StockNumArrWithDate) returns (StockHistoryCloseResponse) {}
+
+    rpc SubscribeStockTick(StockNumArr) returns (SubscribeResponse) {}
+    rpc SubscribeStockBidAsk(StockNumArr) returns (SubscribeResponse) {}
 }
 
 message TokenResponse {
@@ -151,4 +154,8 @@ message StockVolumeRankMessage {
     int64 bid_volumes      = 25;
     int64 ask_orders       = 26;
     int64 ask_volumes      = 27;
+}
+
+message SubscribeResponse {
+    repeated string fail_arr = 1;
 }
