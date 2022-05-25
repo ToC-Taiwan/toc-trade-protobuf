@@ -23,6 +23,21 @@ service SinopacForwarder {
     rpc UnSubscribeStockBidAsk(StockNumArr) returns (SubscribeResponse) {}
 }
 
+service LongConeectionService {
+    rpc EventChannel(stream EventResponse) returns (TokenResponse) {}
+}
+
+message LongConnectionResult {
+    string error = 1;
+}
+
+message EventResponse {
+    int64 resp_code  = 1;
+    int64 event_code = 2;
+    string info      = 3;
+    string event     = 4;
+}
+
 message TokenResponse {
     string token = 1;
 }
