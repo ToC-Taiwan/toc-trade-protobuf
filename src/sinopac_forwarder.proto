@@ -25,6 +25,9 @@ service SinopacForwarder {
 
 service LongConeectionService {
     rpc EventChannel(google.protobuf.Empty) returns (stream EventResponse) {}
+    rpc TickChannel(google.protobuf.Empty) returns (stream StockRealTimeTickResponse) {}
+    rpc BidAskChannel(google.protobuf.Empty) returns (stream StockRealTimeBidAskResponse) {}
+    rpc OrderStatusChannel(google.protobuf.Empty) returns (stream StockOrderStatusHistoryResponse) {}
 }
 
 message EventResponse {
@@ -171,4 +174,51 @@ message StockVolumeRankMessage {
 
 message SubscribeResponse {
     repeated string fail_arr = 1;
+}
+
+message StockRealTimeTickResponse {
+    string code              = 1;
+    string date_time         = 2;
+    double open              = 3;
+    double avg_price         = 4;
+    double close             = 5;
+    double high              = 6;
+    double low               = 7;
+    double amount            = 8;
+    double total_amount      = 9;
+    int64 volume             = 10;
+    int64 total_volume       = 11;
+    int64 tick_type          = 12;
+    int64 chg_type           = 13;
+    double price_chg         = 14;
+    double pct_chg           = 15;
+    int64 bid_side_total_vol = 16;
+    int64 ask_side_total_vol = 17;
+    int64 bid_side_total_cnt = 18;
+    int64 ask_side_total_cnt = 19;
+    int64 suspend            = 20;
+    int64 simtrade           = 21;
+}
+
+message StockRealTimeBidAskResponse {
+    string code                 = 1;
+    string date_time            = 2;
+    repeated double bid_price   = 3;
+    repeated int64 bid_volume   = 4;
+    repeated int64 diff_bid_vol = 5;
+    repeated double ask_price   = 6;
+    repeated int64 ask_volume   = 7;
+    repeated int64 diff_ask_vol = 8;
+    int64 suspend               = 9;
+    int64 simtrade              = 10;
+}
+
+message StockOrderStatusHistoryResponse {
+    string status     = 1;
+    string code       = 2;
+    string action     = 3;
+    double price      = 4;
+    int64 quantity    = 5;
+    string order_id   = 6;
+    string order_time = 7;
 }
