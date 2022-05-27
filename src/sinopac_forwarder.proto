@@ -9,7 +9,9 @@ service SinopacForwarder {
     rpc GetAllStockDetail(google.protobuf.Empty) returns (StockDetailResponse) {}
     rpc GetAllStockSnapshot(google.protobuf.Empty) returns (StockSnapshotResponse) {}
     rpc GetStockSnapshotTSE(google.protobuf.Empty) returns (StockSnapshotResponse) {}
+
     rpc GetStockTSEHistoryTick(Date) returns (StockHistoryTickResponse) {}
+    rpc GetStockTSEHistoryKbar(Date) returns (StockHistoryKbarResponse) {}
 
     rpc GetStockVolumeRank(VolumeRankRequest) returns (StockVolumeRankResponse) {}
 
