@@ -12,6 +12,7 @@ service SinopacForwarder {
 
     rpc GetStockTSEHistoryTick(Date) returns (StockHistoryTickResponse) {}
     rpc GetStockTSEHistoryKbar(Date) returns (StockHistoryKbarResponse) {}
+    rpc GetStockTSEHistoryClose(Date) returns (StockHistoryCloseResponse) {}
 
     rpc GetStockVolumeRank(VolumeRankRequest) returns (StockVolumeRankResponse) {}
 
