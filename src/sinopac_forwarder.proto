@@ -20,6 +20,7 @@ service SinopacForwarder {
     rpc GetStockHistoryTick(StockNumArrWithDate) returns (StockHistoryTickResponse) {}
     rpc GetStockHistoryKbar(StockNumArrWithDate) returns (StockHistoryKbarResponse) {}
     rpc GetStockHistoryClose(StockNumArrWithDate) returns (StockHistoryCloseResponse) {}
+    rpc GetStockHistoryCloseByDateArr(StockNumArrWithDateArr) returns (StockHistoryCloseResponse) {}
 
     rpc SubscribeStockTick(StockNumArr) returns (SubscribeResponse) {}
     rpc SubscribeStockBidAsk(StockNumArr) returns (SubscribeResponse) {}
@@ -56,6 +57,11 @@ message StockNumArr {
 message StockNumArrWithDate {
     repeated string stock_num_arr = 1;
     string date                   = 2;
+}
+
+message StockNumArrWithDateArr {
+    repeated string stock_num_arr = 1;
+    repeated string date_arr      = 2;
 }
 
 message StockDetailResponse {
