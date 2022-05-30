@@ -32,7 +32,36 @@ service LongConeectionService {
     rpc EventChannel(google.protobuf.Empty) returns (stream EventResponse) {}
     rpc TickChannel(google.protobuf.Empty) returns (stream StockRealTimeTickResponse) {}
     rpc BidAskChannel(google.protobuf.Empty) returns (stream StockRealTimeBidAskResponse) {}
-    rpc OrderStatusChannel(google.protobuf.Empty) returns (stream StockOrderStatusHistoryResponse) {}
+    rpc OrderStatusChannel(google.protobuf.Empty) returns (stream StockOrderStatus) {}
+}
+
+service TradeService {
+    rpc BuyStock(StockOrderDetail) returns (TradeResult) {}
+    rpc SellStock(StockOrderDetail) returns (TradeResult) {}
+    rpc SellFirstStock(StockOrderDetail) returns (TradeResult) {}
+
+    rpc CancelStock(OrderID) returns (TradeResult) {}
+    rpc GetOrderStatusByID(OrderID) returns (TradeResult) {}
+
+    rpc GetOrderStatusArr(google.protobuf.Empty) returns (StockOrderStatusArr) {}
+}
+
+message OrderID {
+    string order_id = 1;
+    bool simulate   = 2;
+}
+
+message StockOrderDetail {
+    string stock_num = 1;
+    double price     = 2;
+    int64 quantity   = 3;
+    bool simulate    = 4;
+}
+
+message TradeResult {
+    string order_id = 1;
+    string status   = 2;
+    string error    = 3;
 }
 
 message EventResponse {
@@ -227,7 +256,11 @@ message StockRealTimeBidAskResponse {
     int64 simtrade              = 10;
 }
 
-message StockOrderStatusHistoryResponse {
+message StockOrderStatusArr {
+    repeated StockOrderStatus data = 1;
+}
+
+message StockOrderStatus {
     string status     = 1;
     string code       = 2;
     string action     = 3;
