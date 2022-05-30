@@ -44,6 +44,11 @@ service TradeService {
     rpc GetOrderStatusByID(OrderID) returns (TradeResult) {}
 
     rpc GetOrderStatusArr(google.protobuf.Empty) returns (StockOrderStatusArr) {}
+    rpc GetNonBlockOrderStatusArr(google.protobuf.Empty) returns (FunctionErr) {}
+}
+
+message FunctionErr {
+    string err = 1;
 }
 
 message OrderID {
