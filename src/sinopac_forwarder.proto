@@ -4,24 +4,24 @@ import "google/protobuf/empty.proto";
 option go_package = "./pb";
 
 service SinopacForwarder {
+    // Basic
     rpc GetServerToken(google.protobuf.Empty) returns (TokenResponse) {}
-
     rpc GetAllStockDetail(google.protobuf.Empty) returns (StockDetailResponse) {}
     rpc GetAllStockSnapshot(google.protobuf.Empty) returns (StockSnapshotResponse) {}
+    rpc GetStockSnapshotByNumArr(StockNumArr) returns (StockSnapshotResponse) {}
     rpc GetStockSnapshotTSE(google.protobuf.Empty) returns (StockSnapshotResponse) {}
 
-    rpc GetStockTSEHistoryTick(Date) returns (StockHistoryTickResponse) {}
-    rpc GetStockTSEHistoryKbar(Date) returns (StockHistoryKbarResponse) {}
-    rpc GetStockTSEHistoryClose(Date) returns (StockHistoryCloseResponse) {}
-
-    rpc GetStockVolumeRank(VolumeRankRequest) returns (StockVolumeRankResponse) {}
-
-    rpc GetStockSnapshotByNumArr(StockNumArr) returns (StockSnapshotResponse) {}
+    // History
     rpc GetStockHistoryTick(StockNumArrWithDate) returns (StockHistoryTickResponse) {}
     rpc GetStockHistoryKbar(StockNumArrWithDate) returns (StockHistoryKbarResponse) {}
     rpc GetStockHistoryClose(StockNumArrWithDate) returns (StockHistoryCloseResponse) {}
     rpc GetStockHistoryCloseByDateArr(StockNumArrWithDateArr) returns (StockHistoryCloseResponse) {}
+    rpc GetStockTSEHistoryTick(Date) returns (StockHistoryTickResponse) {}
+    rpc GetStockTSEHistoryKbar(Date) returns (StockHistoryKbarResponse) {}
+    rpc GetStockTSEHistoryClose(Date) returns (StockHistoryCloseResponse) {}
 
+    // Target
+    rpc GetStockVolumeRank(VolumeRankRequest) returns (StockVolumeRankResponse) {}
     rpc SubscribeStockTick(StockNumArr) returns (SubscribeResponse) {}
     rpc SubscribeStockBidAsk(StockNumArr) returns (SubscribeResponse) {}
     rpc UnSubscribeStockTick(StockNumArr) returns (SubscribeResponse) {}
@@ -39,10 +39,8 @@ service TradeService {
     rpc BuyStock(StockOrderDetail) returns (TradeResult) {}
     rpc SellStock(StockOrderDetail) returns (TradeResult) {}
     rpc SellFirstStock(StockOrderDetail) returns (TradeResult) {}
-
     rpc CancelStock(OrderID) returns (TradeResult) {}
     rpc GetOrderStatusByID(OrderID) returns (TradeResult) {}
-
     rpc GetOrderStatusArr(google.protobuf.Empty) returns (StockOrderStatusArr) {}
     rpc GetNonBlockOrderStatusArr(google.protobuf.Empty) returns (FunctionErr) {}
 }
