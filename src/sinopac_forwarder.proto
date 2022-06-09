@@ -68,6 +68,10 @@ message TradeResult {
 }
 
 message EventResponse {
+    repeated EventMessage data = 1;
+}
+
+message EventMessage {
     int64 resp_code  = 1;
     int64 event_code = 2;
     string info      = 3;
