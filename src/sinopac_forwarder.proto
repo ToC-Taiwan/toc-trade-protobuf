@@ -23,10 +23,10 @@ service SinopacForwarder {
     // Target
     rpc GetStockVolumeRank(VolumeRankRequest) returns (StockVolumeRankResponse) {}
     rpc SubscribeStockTick(StockNumArr) returns (SubscribeResponse) {}
-    rpc SubscribeStockBidAsk(StockNumArr) returns (SubscribeResponse) {}
     rpc UnSubscribeStockTick(StockNumArr) returns (SubscribeResponse) {}
-    rpc UnSubscribeStockAllTick(StockNumArr) returns (SubscribeResponse) {}
-    rpc UnSubscribeStockBidAsk(google.protobuf.Empty) returns (FunctionErr) {}
+    rpc UnSubscribeStockAllTick(google.protobuf.Empty) returns (FunctionErr) {}
+    rpc SubscribeStockBidAsk(StockNumArr) returns (SubscribeResponse) {}
+    rpc UnSubscribeStockBidAsk(StockNumArr) returns (SubscribeResponse) {}
     rpc UnSubscribeStockAllBidAsk(google.protobuf.Empty) returns (FunctionErr) {}
 }
 
