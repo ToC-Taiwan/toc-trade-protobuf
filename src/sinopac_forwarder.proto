@@ -25,7 +25,9 @@ service SinopacForwarder {
     rpc SubscribeStockTick(StockNumArr) returns (SubscribeResponse) {}
     rpc SubscribeStockBidAsk(StockNumArr) returns (SubscribeResponse) {}
     rpc UnSubscribeStockTick(StockNumArr) returns (SubscribeResponse) {}
-    rpc UnSubscribeStockBidAsk(StockNumArr) returns (SubscribeResponse) {}
+    rpc UnSubscribeStockAllTick(StockNumArr) returns (SubscribeResponse) {}
+    rpc UnSubscribeStockBidAsk(google.protobuf.Empty) returns (FunctionErr) {}
+    rpc UnSubscribeStockAllBidAsk(google.protobuf.Empty) returns (FunctionErr) {}
 }
 
 // service LongConeectionService {
