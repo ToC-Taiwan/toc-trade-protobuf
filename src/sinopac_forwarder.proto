@@ -7,7 +7,6 @@ service SinopacForwarder {
     // Health check
     rpc Heartbeat(stream Beat) returns (stream Beat);
     // Basic
-    rpc GetServerToken(google.protobuf.Empty) returns (TokenResponse) {}
     rpc GetAllStockDetail(google.protobuf.Empty) returns (StockDetailResponse) {}
     rpc GetAllStockSnapshot(google.protobuf.Empty) returns (StockSnapshotResponse) {}
     rpc GetStockSnapshotByNumArr(StockNumArr) returns (StockSnapshotResponse) {}
