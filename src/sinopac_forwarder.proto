@@ -3,9 +3,13 @@ package sinopac_forwarder;
 import "google/protobuf/empty.proto";
 option go_package = "./pb";
 
-service SinopacForwarder {
+service HealthCheck {
     // Health check
     rpc Heartbeat(stream Beat) returns (stream Beat);
+    rpc Terminate(google.protobuf.Empty) returns (google.protobuf.Empty);
+}
+
+service SinopacForwarder {
     // Basic
     rpc GetAllStockDetail(google.protobuf.Empty) returns (StockDetailResponse) {}
     rpc GetAllStockSnapshot(google.protobuf.Empty) returns (StockSnapshotResponse) {}
