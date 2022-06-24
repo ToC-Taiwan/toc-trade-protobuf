@@ -162,11 +162,11 @@ message StockHistoryKbarResponse {
 
 message StockHistoryKbarMessage {
     int64 ts         = 1;
-    double Close     = 2;
-    double Open      = 3;
-    double High      = 4;
-    double Low       = 5;
-    int64 Volume     = 6;
+    double close     = 2;
+    double open      = 3;
+    double high      = 4;
+    double low       = 5;
+    int64 volume     = 6;
     string stock_num = 7;
 }
 
