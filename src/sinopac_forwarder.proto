@@ -45,6 +45,23 @@ service TradeService {
     rpc GetNonBlockOrderStatusArr(google.protobuf.Empty) returns (FunctionErr) {}
 }
 
+service FutureForwarder {
+    rpc GetFIMTXSnapshot(google.protobuf.Empty) returns (StockSnapshotResponse) {}
+}
+
+message FutureDetailMessage {
+    string code            = 1;
+    string symbol          = 2;
+    string name            = 3;
+    string category        = 4;
+    double limit_up        = 5;
+    double limit_down      = 6;
+    double reference       = 7;
+    string update_date     = 8;
+    string delivery_month  = 9;
+    string underlying_kind = 10;
+}
+
 message Beat {
     string message = 1;
 }
