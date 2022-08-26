@@ -25,13 +25,19 @@ service SinopacForwarder {
     rpc GetStockTSEHistoryKbar(Date) returns (StockHistoryKbarResponse) {}
     rpc GetStockTSEHistoryClose(Date) returns (StockHistoryCloseResponse) {}
 
-    // Target
+    // Stock Target
     rpc GetStockVolumeRank(VolumeRankRequest) returns (StockVolumeRankResponse) {}
     rpc SubscribeStockTick(StockNumArr) returns (SubscribeResponse) {}
     rpc UnSubscribeStockTick(StockNumArr) returns (SubscribeResponse) {}
-    rpc UnSubscribeStockAllTick(google.protobuf.Empty) returns (FunctionErr) {}
     rpc SubscribeStockBidAsk(StockNumArr) returns (SubscribeResponse) {}
     rpc UnSubscribeStockBidAsk(StockNumArr) returns (SubscribeResponse) {}
+
+    // Future Target
+    rpc SubscribeFutureTick(FutureCoderr) returns (SubscribeResponse) {}
+    rpc UnSubscribeFutureTick(FutureCoderr) returns (SubscribeResponse) {}
+
+    // Unsubscribe
+    rpc UnSubscribeStockAllTick(google.protobuf.Empty) returns (FunctionErr) {}
     rpc UnSubscribeStockAllBidAsk(google.protobuf.Empty) returns (FunctionErr) {}
 }
 
