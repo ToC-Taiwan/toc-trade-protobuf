@@ -53,9 +53,7 @@ service TradeService {
 
 service FutureForwarder {
     rpc GetAllFutureDetail(google.protobuf.Empty) returns (FutureDetailResponse) {}
-
     rpc GetFutureSnapshotByCodeArr(FutureCodeArr) returns (StockSnapshotResponse) {}
-    rpc GetFIMTXSnapshot(google.protobuf.Empty) returns (StockSnapshotMessage) {}
 }
 
 message FutureDetailResponse {
