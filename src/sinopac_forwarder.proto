@@ -59,12 +59,14 @@ message FutureDetailMessage {
     string symbol          = 2;
     string name            = 3;
     string category        = 4;
-    double limit_up        = 5;
-    double limit_down      = 6;
-    double reference       = 7;
-    string update_date     = 8;
-    string delivery_month  = 9;
-    string underlying_kind = 10;
+    string delivery_month  = 5;
+    string delivery_date   = 6;
+    string underlying_kind = 7;
+    int64 unit             = 8;
+    double limit_up        = 9;
+    double limit_down      = 10;
+    double reference       = 11;
+    string update_date     = 12;
 }
 
 message Beat {
