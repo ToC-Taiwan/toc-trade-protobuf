@@ -33,8 +33,8 @@ service SinopacForwarder {
     rpc UnSubscribeStockBidAsk(StockNumArr) returns (SubscribeResponse) {}
 
     // Future Target
-    rpc SubscribeFutureTick(FutureCoderr) returns (SubscribeResponse) {}
-    rpc UnSubscribeFutureTick(FutureCoderr) returns (SubscribeResponse) {}
+    rpc SubscribeFutureTick(FutureCodeArr) returns (SubscribeResponse) {}
+    rpc UnSubscribeFutureTick(FutureCodeArr) returns (SubscribeResponse) {}
 
     // Unsubscribe
     rpc UnSubscribeStockAllTick(google.protobuf.Empty) returns (FunctionErr) {}
@@ -54,7 +54,7 @@ service TradeService {
 service FutureForwarder {
     rpc GetAllFutureDetail(google.protobuf.Empty) returns (FutureDetailResponse) {}
 
-    rpc GetFutureSnapshotByCodeArr(FutureCoderr) returns (StockSnapshotResponse) {}
+    rpc GetFutureSnapshotByCodeArr(FutureCodeArr) returns (StockSnapshotResponse) {}
     rpc GetFIMTXSnapshot(google.protobuf.Empty) returns (StockSnapshotMessage) {}
 }
 
@@ -119,7 +119,7 @@ message StockNumArr {
     repeated string stock_num_arr = 1;
 }
 
-message FutureCoderr {
+message FutureCodeArr {
     repeated string future_code_arr = 1;
 }
 
