@@ -55,6 +55,7 @@ service FutureForwarder {
     rpc GetAllFutureDetail(google.protobuf.Empty) returns (FutureDetailResponse) {}
     rpc GetFutureSnapshotByCodeArr(FutureCodeArr) returns (StockSnapshotResponse) {}
     rpc GetFutureHistoryTick(FutureCodeArrWithDate) returns (StockHistoryTickResponse) {}
+    rpc GetFutureHistoryClose(FutureCodeArrWithDate) returns (StockHistoryCloseResponse) {}
 }
 
 message FutureDetailResponse {
