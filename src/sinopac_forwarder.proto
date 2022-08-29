@@ -49,6 +49,8 @@ service TradeService {
     rpc GetOrderStatusByID(OrderID) returns (TradeResult) {}
     rpc GetOrderStatusArr(google.protobuf.Empty) returns (StockOrderStatusArr) {}
     rpc GetNonBlockOrderStatusArr(google.protobuf.Empty) returns (FunctionErr) {}
+
+    rpc BuyFuture(FutureOrderDetail) returns (TradeResult) {}
 }
 
 service FutureForwarder {
@@ -95,6 +97,12 @@ message StockOrderDetail {
     double price     = 2;
     int64 quantity   = 3;
     bool simulate    = 4;
+}
+
+message FutureOrderDetail {
+    string code    = 1;
+    double price   = 2;
+    int64 quantity = 3;
 }
 
 message TradeResult {
