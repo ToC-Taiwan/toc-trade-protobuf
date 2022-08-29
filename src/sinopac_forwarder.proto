@@ -61,6 +61,7 @@ service FutureForwarder {
     rpc GetFutureSnapshotByCodeArr(FutureCodeArr) returns (StockSnapshotResponse) {}
     rpc GetFutureHistoryTick(FutureCodeArrWithDate) returns (StockHistoryTickResponse) {}
     rpc GetFutureHistoryClose(FutureCodeArrWithDate) returns (StockHistoryCloseResponse) {}
+    rpc GetFutureHistoryKbar(FutureCodeArrWithDate) returns (StockHistoryKbarResponse) {}
 }
 
 message FutureDetailResponse {
