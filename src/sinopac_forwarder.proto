@@ -51,6 +51,9 @@ service TradeService {
     rpc GetNonBlockOrderStatusArr(google.protobuf.Empty) returns (FunctionErr) {}
 
     rpc BuyFuture(FutureOrderDetail) returns (TradeResult) {}
+    rpc SellFuture(FutureOrderDetail) returns (TradeResult) {}
+    rpc SellFirstFuture(FutureOrderDetail) returns (TradeResult) {}
+    rpc CancelFuture(FutureOrderID) returns (TradeResult) {}
 }
 
 service FutureForwarder {
@@ -90,6 +93,10 @@ message FunctionErr {
 message OrderID {
     string order_id = 1;
     bool simulate   = 2;
+}
+
+message FutureOrderID {
+    string order_id = 1;
 }
 
 message StockOrderDetail {
