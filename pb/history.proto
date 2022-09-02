@@ -2,7 +2,7 @@ syntax = "proto3";
 package sinopac_forwarder;
 option go_package = "./pb";
 
-import "src/common.proto";
+import "pb/common.proto";
 
 service HistoryDataInterface {
     rpc GetStockHistoryTick(StockNumArrWithDate) returns (HistoryTickResponse) {}

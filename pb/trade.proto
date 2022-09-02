@@ -3,7 +3,7 @@ package sinopac_forwarder;
 import "google/protobuf/empty.proto";
 option go_package = "./pb";
 
-import "src/common.proto";
+import "pb/common.proto";
 
 service TradeInterface {
     rpc BuyStock(StockOrderDetail) returns (TradeResult) {}
