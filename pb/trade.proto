@@ -47,6 +47,7 @@ message OrderID {
 
 message FutureOrderID {
     string order_id = 1;
+    bool simulate   = 2;
 }
 
 message StockOrderStatusArr {
