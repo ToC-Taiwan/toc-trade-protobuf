@@ -1,0 +1,42 @@
+syntax = "proto3";
+package sinopac_forwarder;
+import "google/protobuf/empty.proto";
+option go_package = "./pb";
+
+service BasicDataInterface {
+    rpc GetAllStockDetail(google.protobuf.Empty) returns (StockDetailResponse) {}
+    rpc GetAllFutureDetail(google.protobuf.Empty) returns (FutureDetailResponse) {}
+}
+
+message StockDetailResponse {
+    repeated StockDetailMessage stock = 1;
+}
+
+message StockDetailMessage {
+    string exchange    = 1;
+    string category    = 2;
+    string code        = 3;
+    string name        = 4;
+    double reference   = 5;
+    string update_date = 6;
+    string day_trade   = 7;
+}
+
+message FutureDetailResponse {
+    repeated FutureDetailMessage future = 1;
+}
+
+message FutureDetailMessage {
+    string code            = 1;
+    string symbol          = 2;
+    string name            = 3;
+    string category        = 4;
+    string delivery_month  = 5;
+    string delivery_date   = 6;
+    string underlying_kind = 7;
+    int64 unit             = 8;
+    double limit_up        = 9;
+    double limit_down      = 10;
+    double reference       = 11;
+    string update_date     = 12;
+}

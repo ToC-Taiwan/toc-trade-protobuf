@@ -1,0 +1,63 @@
+syntax = "proto3";
+package sinopac_forwarder;
+import "google/protobuf/empty.proto";
+option go_package = "./pb";
+
+import "src/common.proto";
+
+service TradeInterface {
+    rpc BuyStock(StockOrderDetail) returns (TradeResult) {}
+    rpc SellStock(StockOrderDetail) returns (TradeResult) {}
+    rpc SellFirstStock(StockOrderDetail) returns (TradeResult) {}
+    rpc CancelStock(OrderID) returns (TradeResult) {}
+    rpc GetOrderStatusByID(OrderID) returns (TradeResult) {}
+    rpc GetOrderStatusArr(google.protobuf.Empty) returns (StockOrderStatusArr) {}
+    rpc GetNonBlockOrderStatusArr(google.protobuf.Empty) returns (ErrorMessage) {}
+
+    rpc BuyFuture(FutureOrderDetail) returns (TradeResult) {}
+    rpc SellFuture(FutureOrderDetail) returns (TradeResult) {}
+    rpc SellFirstFuture(FutureOrderDetail) returns (TradeResult) {}
+    rpc CancelFuture(FutureOrderID) returns (TradeResult) {}
+}
+
+message StockOrderDetail {
+    string stock_num = 1;
+    double price     = 2;
+    int64 quantity   = 3;
+    bool simulate    = 4;
+}
+
+message FutureOrderDetail {
+    string code    = 1;
+    double price   = 2;
+    int64 quantity = 3;
+}
+
+message TradeResult {
+    string order_id = 1;
+    string status   = 2;
+    string error    = 3;
+}
+
+message OrderID {
+    string order_id = 1;
+    bool simulate   = 2;
+}
+
+message FutureOrderID {
+    string order_id = 1;
+}
+
+message StockOrderStatusArr {
+    repeated StockOrderStatus data = 1;
+}
+
+message StockOrderStatus {
+    string status     = 1;
+    string code       = 2;
+    string action     = 3;
+    double price      = 4;
+    int64 quantity    = 5;
+    string order_id   = 6;
+    string order_time = 7;
+}

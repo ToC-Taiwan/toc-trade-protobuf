@@ -1,0 +1,100 @@
+syntax = "proto3";
+package sinopac_forwarder;
+import "google/protobuf/empty.proto";
+option go_package = "./pb";
+
+import "src/common.proto";
+
+service StreamDataInterface {
+    rpc GetStockSnapshotByNumArr(StockNumArr) returns (SnapshotResponse) {}
+    rpc GetAllStockSnapshot(google.protobuf.Empty) returns (SnapshotResponse) {}
+    rpc GetStockSnapshotTSE(google.protobuf.Empty) returns (SnapshotMessage) {}
+
+    rpc GetStockVolumeRank(VolumeRankRequest) returns (StockVolumeRankResponse) {}
+
+    rpc SubscribeStockTick(StockNumArr) returns (SubscribeResponse) {}
+    rpc UnSubscribeStockTick(StockNumArr) returns (SubscribeResponse) {}
+
+    rpc SubscribeStockBidAsk(StockNumArr) returns (SubscribeResponse) {}
+    rpc UnSubscribeStockBidAsk(StockNumArr) returns (SubscribeResponse) {}
+
+    rpc SubscribeFutureTick(FutureCodeArr) returns (SubscribeResponse) {}
+    rpc UnSubscribeFutureTick(FutureCodeArr) returns (SubscribeResponse) {}
+
+    rpc UnSubscribeStockAllTick(google.protobuf.Empty) returns (ErrorMessage) {}
+    rpc UnSubscribeStockAllBidAsk(google.protobuf.Empty) returns (ErrorMessage) {}
+
+    rpc GetFutureSnapshotByCodeArr(FutureCodeArr) returns (SnapshotResponse) {}
+}
+
+message VolumeRankRequest {
+    int64 count = 1;
+    string date = 2;
+}
+
+message SnapshotResponse {
+    repeated SnapshotMessage data = 1;
+}
+
+message SnapshotMessage {
+    int64 ts                = 1;
+    string code             = 2;
+    string exchange         = 3;
+    double open             = 4;
+    double high             = 5;
+    double low              = 6;
+    double close            = 7;
+    string tick_type        = 8;
+    double change_price     = 9;
+    double change_rate      = 10;
+    string change_type      = 11;
+    double average_price    = 12;
+    int64 volume            = 13;
+    int64 total_volume      = 14;
+    int64 amount            = 15;
+    int64 total_amount      = 16;
+    double yesterday_volume = 17;
+    double buy_price        = 18;
+    double buy_volume       = 19;
+    double sell_price       = 20;
+    int64 sell_volume       = 21;
+    double volume_ratio     = 22;
+}
+
+message StockVolumeRankResponse {
+    repeated StockVolumeRankMessage data = 1;
+}
+
+message StockVolumeRankMessage {
+    string date            = 1;
+    string code            = 2;
+    string name            = 3;
+    int64 ts               = 4;
+    double open            = 5;
+    double high            = 6;
+    double low             = 7;
+    double close           = 8;
+    double price_range     = 9;
+    int64 tick_type        = 10;
+    double change_price    = 11;
+    int64 change_type      = 12;
+    double average_price   = 13;
+    int64 volume           = 14;
+    int64 total_volume     = 15;
+    int64 amount           = 16;
+    int64 total_amount     = 17;
+    int64 yesterday_volume = 18;
+    double volume_ratio    = 19;
+    double buy_price       = 20;
+    int64 buy_volume       = 21;
+    double sell_price      = 22;
+    int64 sell_volume      = 23;
+    int64 bid_orders       = 24;
+    int64 bid_volumes      = 25;
+    int64 ask_orders       = 26;
+    int64 ask_volumes      = 27;
+}
+
+message SubscribeResponse {
+    repeated string fail_arr = 1;
+}

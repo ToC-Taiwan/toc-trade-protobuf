@@ -1,0 +1,60 @@
+syntax = "proto3";
+package sinopac_forwarder;
+option go_package = "./pb";
+
+import "src/common.proto";
+
+service HistoryDataInterface {
+    rpc GetStockHistoryTick(StockNumArrWithDate) returns (HistoryTickResponse) {}
+    rpc GetStockHistoryKbar(StockNumArrWithDate) returns (HistoryKbarResponse) {}
+    rpc GetStockHistoryClose(StockNumArrWithDate) returns (HistoryCloseResponse) {}
+    rpc GetStockHistoryCloseByDateArr(StockNumArrWithDateArr) returns (HistoryCloseResponse) {}
+
+    rpc GetStockTSEHistoryTick(Date) returns (HistoryTickResponse) {}
+    rpc GetStockTSEHistoryKbar(Date) returns (HistoryKbarResponse) {}
+    rpc GetStockTSEHistoryClose(Date) returns (HistoryCloseResponse) {}
+
+    rpc GetFutureHistoryTick(FutureCodeArrWithDate) returns (HistoryTickResponse) {}
+    rpc GetFutureHistoryClose(FutureCodeArrWithDate) returns (HistoryCloseResponse) {}
+    rpc GetFutureHistoryKbar(FutureCodeArrWithDate) returns (HistoryKbarResponse) {}
+}
+
+message HistoryTickResponse {
+    repeated HistoryTickMessage data = 1;
+}
+
+message HistoryTickMessage {
+    int64 ts         = 1;
+    double close     = 2;
+    int64 volume     = 3;
+    double bid_price = 4;
+    int64 bid_volume = 5;
+    double ask_price = 6;
+    int64 ask_volume = 7;
+    int64 tick_type  = 8;
+    string code      = 9;
+}
+
+message HistoryKbarResponse {
+    repeated HistoryKbarMessage data = 1;
+}
+
+message HistoryKbarMessage {
+    int64 ts     = 1;
+    double close = 2;
+    double open  = 3;
+    double high  = 4;
+    double low   = 5;
+    int64 volume = 6;
+    string code  = 7;
+}
+
+message HistoryCloseResponse {
+    repeated HistoryCloseMessage data = 1;
+}
+
+message HistoryCloseMessage {
+    string date  = 1;
+    string code  = 2;
+    double close = 3;
+}
