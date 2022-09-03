@@ -3,7 +3,7 @@ package sinopac_forwarder;
 import "google/protobuf/empty.proto";
 option go_package = "./pb";
 
-import "pb/common.proto";
+import "common.proto";
 
 service StreamDataInterface {
     rpc GetStockSnapshotByNumArr(StockNumArr) returns (SnapshotResponse) {}
