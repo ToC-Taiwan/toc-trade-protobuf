@@ -69,6 +69,25 @@ message StockRealTimeBidAskMessage {
     int64 simtrade              = 10;
 }
 
+message FutureRealTimeBidAskMessage {
+    string code                    = 1;
+    string date_time               = 2;
+    int64 bid_total_vol            = 3;
+    int64 ask_total_vol            = 4;
+    repeated double bid_price      = 5;
+    repeated int64 bid_volume      = 6;
+    repeated int64 diff_bid_vol    = 7;
+    repeated double ask_price      = 8;
+    repeated int64 ask_volume      = 9;
+    repeated int64 diff_ask_vol    = 10;
+    double first_derived_bid_price = 11;
+    double first_derived_ask_price = 12;
+    int64 first_derived_bid_vol    = 13;
+    int64 first_derived_ask_vol    = 14;
+    double underlying_price        = 15;
+    int64 simtrade                 = 16;
+}
+
 message ErrorMessage {
     string err = 1;
 }
