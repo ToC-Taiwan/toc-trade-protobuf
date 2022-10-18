@@ -21,6 +21,9 @@ service StreamDataInterface {
     rpc SubscribeFutureTick(FutureCodeArr) returns (SubscribeResponse) {}
     rpc UnSubscribeFutureTick(FutureCodeArr) returns (SubscribeResponse) {}
 
+    rpc SubscribeFutureBidAsk(FutureCodeArr) returns (SubscribeResponse) {}
+    rpc UnSubscribeFutureBidAsk(FutureCodeArr) returns (SubscribeResponse) {}
+
     rpc UnSubscribeStockAllTick(google.protobuf.Empty) returns (ErrorMessage) {}
     rpc UnSubscribeStockAllBidAsk(google.protobuf.Empty) returns (ErrorMessage) {}
 
