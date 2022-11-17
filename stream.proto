@@ -36,6 +36,7 @@ service StreamDataInterface {
 
 message YahooFinancePrice {
     double price = 1;
+    double last  = 2;
 }
 
 message VolumeRankRequest {
