@@ -11,6 +11,9 @@ service StreamDataInterface {
     rpc GetStockSnapshotTSE(google.protobuf.Empty) returns (SnapshotMessage) {}
     rpc GetStockSnapshotOTC(google.protobuf.Empty) returns (SnapshotMessage) {}
 
+    rpc GetNasdaq(google.protobuf.Empty) returns (YahooFinancePrice) {}
+    rpc GetNasdaqFuture(google.protobuf.Empty) returns (YahooFinancePrice) {}
+
     rpc GetStockVolumeRank(VolumeRankRequest) returns (StockVolumeRankResponse) {}
 
     rpc SubscribeStockTick(StockNumArr) returns (SubscribeResponse) {}
@@ -29,6 +32,10 @@ service StreamDataInterface {
     rpc UnSubscribeStockAllBidAsk(google.protobuf.Empty) returns (ErrorMessage) {}
 
     rpc GetFutureSnapshotByCodeArr(FutureCodeArr) returns (SnapshotResponse) {}
+}
+
+message YahooFinancePrice {
+    double price = 1;
 }
 
 message VolumeRankRequest {
