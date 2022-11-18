@@ -18,6 +18,27 @@ service TradeInterface {
     rpc SellFuture(FutureOrderDetail) returns (TradeResult) {}
     rpc SellFirstFuture(FutureOrderDetail) returns (TradeResult) {}
     rpc CancelFuture(FutureOrderID) returns (TradeResult) {}
+
+    rpc GetFuturePosition(google.protobuf.Empty) returns (FuturePositionArr) {}
+}
+
+// code (str): contract id.
+// direction (Action): action. {Buy, Sell}
+// quantity (int): quantity.
+// price (float): the average price.
+// last_price (float): last price.
+// pnl (float): unrealized profit.
+message FuturePosition {
+    string code       = 1;
+    string direction  = 2;
+    int32 quantity    = 3;
+    double price      = 4;
+    double last_price = 5;
+    double pnl        = 6;
+}
+
+message FuturePositionArr {
+    repeated FuturePosition position_arr = 1;
 }
 
 message StockOrderDetail {
