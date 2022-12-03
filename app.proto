@@ -30,8 +30,8 @@ message WSFutureOrder {
     int64 action      = 4;
     double price      = 5;
     int64 quantity    = 6;
-    int64 trade_time  = 7;
-    int64 tick_time   = 8;
+    string trade_time = 7;
+    string tick_time  = 8;
     string group_id   = 9;
 }
 
