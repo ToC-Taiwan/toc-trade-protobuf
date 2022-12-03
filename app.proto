@@ -3,15 +3,21 @@ package sinopac_forwarder;
 option go_package = "./pb";
 
 enum WSType {
-    TYPE_FUTURE_TICK  = 0;
-    TYPE_FUTURE_ORDER = 1;
+    TYPE_FUTURE_TICK         = 0;
+    TYPE_FUTURE_ORDER        = 1;
+    TYPE_PERIOD_TRADE_VOLUME = 2;
+    TYPE_TRADE_INDEX         = 3;
+    TYPE_FUTURE_POSITION     = 4;
 }
 
 message WSMessage {
     WSType type = 1;
     oneof data {
-        WSFutureTick future_tick   = 2;
-        WSFutureOrder future_order = 3;
+        WSFutureTick future_tick                = 2;
+        WSFutureOrder future_order              = 3;
+        WSPeriodTradeVolume period_trade_volume = 4;
+        WSTradeIndex trade_index                = 5;
+        WSFuturePosition future_position        = 6;
     }
 }
 
@@ -46,4 +52,62 @@ message WSFutureTick {
     int64 chg_type           = 16;
     double price_chg         = 17;
     double pct_chg           = 18;
+}
+
+message OutInVolume {
+    int64 out_volume = 1;
+    int64 in_volume  = 2;
+}
+
+message WSPeriodTradeVolume {
+    OutInVolume first_period  = 1;
+    OutInVolume second_period = 2;
+    OutInVolume third_period  = 3;
+    OutInVolume fourth_period = 4;
+}
+
+message WSTradeIndex {
+    StockSnapShot tse = 1;
+    StockSnapShot otc = 2;
+    YahooPrice nasdaq = 3;
+    YahooPrice nf     = 4;
+}
+
+message StockSnapShot {
+    string stock_num        = 1;
+    string stock_name       = 2;
+    string snap_time        = 3;
+    double open             = 4;
+    double high             = 5;
+    double low              = 6;
+    double close            = 7;
+    string tick_type        = 8;
+    double price_chg        = 9;
+    double pct_chg          = 10;
+    string chg_type         = 11;
+    int64 volume            = 12;
+    int64 volume_sum        = 13;
+    int64 amount            = 14;
+    int64 amount_sum        = 15;
+    double yesterday_volume = 16;
+    double volume_ratio     = 17;
+}
+
+message YahooPrice {
+    double last       = 1;
+    double price      = 2;
+    string updated_at = 3;
+}
+
+message WSFuturePosition {
+    repeated FuturePosition position = 1;
+}
+
+message FuturePosition {
+    string code       = 1;
+    string direction  = 2;
+    int64 quantity    = 3;
+    double price      = 4;
+    double last_price = 5;
+    double pnl        = 6;
 }
