@@ -9,7 +9,7 @@ enum WSType {
 
 message WSMessage {
     WSType type = 1;
-    oneof test_oneof {
+    oneof data {
         WSFutureTick future_tick   = 2;
         WSFutureOrder future_order = 3;
     }
