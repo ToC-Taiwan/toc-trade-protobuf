@@ -2,7 +2,20 @@ syntax = "proto3";
 package sinopac_forwarder;
 option go_package = "./pb";
 
-message FutureOrder {
+enum WSType {
+    TYPE_FUTURE_TICK  = 0;
+    TYPE_FUTURE_ORDER = 1;
+}
+
+message WSMessage {
+    WSType type = 1;
+    oneof test_oneof {
+        WSFutureTick future_tick   = 2;
+        WSFutureOrder future_order = 3;
+    }
+}
+
+message WSFutureOrder {
     string order_id   = 1;
     int64 status      = 2;
     string order_time = 3;
@@ -14,7 +27,7 @@ message FutureOrder {
     string group_id   = 9;
 }
 
-message FutureTick {
+message WSFutureTick {
     string code              = 1;
     string tick_time         = 2;
     double open              = 3;
