@@ -1,6 +1,6 @@
 syntax = "proto3";
 package sinopac_forwarder;
-import "protobuf/empty.proto";
+import "google/protobuf/empty.proto";
 option go_package = "./pb";
 
 service BasicDataInterface {
