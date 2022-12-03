@@ -67,13 +67,13 @@ message WSPeriodTradeVolume {
 }
 
 message WSTradeIndex {
-    StockSnapShot tse = 1;
-    StockSnapShot otc = 2;
-    YahooPrice nasdaq = 3;
-    YahooPrice nf     = 4;
+    WSStockSnapShot tse = 1;
+    WSStockSnapShot otc = 2;
+    WSYahooPrice nasdaq = 3;
+    WSYahooPrice nf     = 4;
 }
 
-message StockSnapShot {
+message WSStockSnapShot {
     string stock_num        = 1;
     string stock_name       = 2;
     string snap_time        = 3;
@@ -93,17 +93,17 @@ message StockSnapShot {
     double volume_ratio     = 17;
 }
 
-message YahooPrice {
+message WSYahooPrice {
     double last       = 1;
     double price      = 2;
     string updated_at = 3;
 }
 
 message WSFuturePosition {
-    repeated FuturePosition position = 1;
+    repeated Position position = 1;
 }
 
-message FuturePosition {
+message Position {
     string code       = 1;
     string direction  = 2;
     int64 quantity    = 3;
