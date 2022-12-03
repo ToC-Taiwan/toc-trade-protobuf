@@ -8,6 +8,7 @@ enum WSType {
     TYPE_PERIOD_TRADE_VOLUME = 2;
     TYPE_TRADE_INDEX         = 3;
     TYPE_FUTURE_POSITION     = 4;
+    TYPE_ASSIST_STATUS       = 5;
 }
 
 message WSMessage {
@@ -18,6 +19,7 @@ message WSMessage {
         WSPeriodTradeVolume period_trade_volume = 4;
         WSTradeIndex trade_index                = 5;
         WSFuturePosition future_position        = 6;
+        WSAssitStatus assit_status              = 7;
     }
 }
 
@@ -110,4 +112,8 @@ message Position {
     double price      = 4;
     double last_price = 5;
     double pnl        = 6;
+}
+
+message WSAssitStatus {
+    bool running = 1;
 }
