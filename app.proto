@@ -9,6 +9,7 @@ enum WSType {
     TYPE_TRADE_INDEX         = 3;
     TYPE_FUTURE_POSITION     = 4;
     TYPE_ASSIST_STATUS       = 5;
+    TYPE_ERR_MESSAGE         = 6;
 }
 
 message WSMessage {
@@ -20,10 +21,21 @@ message WSMessage {
         WSTradeIndex trade_index                = 5;
         WSFuturePosition future_position        = 6;
         WSAssitStatus assit_status              = 7;
+        WSErrMessage err_message                = 8;
     }
 }
 
+message WSErrMessage {
+    int64 err_code  = 1;
+    string response = 2;
+}
+
 message WSFutureOrder {
+    string code        = 1;
+    WSOrder base_order = 2;
+}
+
+message WSOrder {
     string order_id   = 1;
     int64 status      = 2;
     string order_time = 3;
