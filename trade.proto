@@ -11,8 +11,9 @@ service TradeInterface {
     rpc SellStock(StockOrderDetail) returns (TradeResult) {}
     rpc SellFirstStock(StockOrderDetail) returns (TradeResult) {}
     rpc CancelStock(OrderID) returns (TradeResult) {}
+
     rpc GetOrderStatusByID(OrderID) returns (TradeResult) {}
-    rpc GetOrderStatusArrFromMQ(google.protobuf.Empty) returns (ErrorMessage) {}
+    rpc GetOrderStatusArrFromMQ(Simulate) returns (ErrorMessage) {}
     rpc GetNonBlockOrderStatusArr(google.protobuf.Empty) returns (ErrorMessage) {}
 
     rpc BuyFuture(FutureOrderDetail) returns (TradeResult) {}
@@ -84,4 +85,8 @@ message StockOrderStatus {
     int64 quantity    = 5;
     string order_id   = 6;
     string order_time = 7;
+}
+
+message Simulate {
+    bool simulate = 1;
 }
