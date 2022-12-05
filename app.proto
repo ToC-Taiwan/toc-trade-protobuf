@@ -10,6 +10,7 @@ enum WSType {
     TYPE_FUTURE_POSITION     = 4;
     TYPE_ASSIST_STATUS       = 5;
     TYPE_ERR_MESSAGE         = 6;
+    TYPE_KBAR_ARR            = 7;
 }
 
 message WSMessage {
@@ -22,6 +23,7 @@ message WSMessage {
         WSFuturePosition future_position        = 6;
         WSAssitStatus assit_status              = 7;
         WSErrMessage err_message                = 8;
+        WSHistoryKbarMessage history_kbar       = 9;
     }
 }
 
@@ -128,4 +130,14 @@ message Position {
 
 message WSAssitStatus {
     bool running = 1;
+}
+
+message WSHistoryKbarMessage {
+    int64 ts     = 1;
+    double close = 2;
+    double open  = 3;
+    double high  = 4;
+    double low   = 5;
+    int64 volume = 6;
+    string code  = 7;
 }
