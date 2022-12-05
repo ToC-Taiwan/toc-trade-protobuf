@@ -137,11 +137,10 @@ message WSHistoryKbarMessage {
 }
 
 message Kbar {
-    int64 ts     = 1;
-    double close = 2;
-    double open  = 3;
-    double high  = 4;
-    double low   = 5;
-    int64 volume = 6;
-    string code  = 7;
+    string kbar_time = 1;
+    double open      = 2;
+    double high      = 3;
+    double close     = 4;
+    double low       = 5;
+    int64 volume     = 6;
 }
