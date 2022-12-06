@@ -11,6 +11,7 @@ enum WSType {
     TYPE_ASSIST_STATUS       = 5;
     TYPE_ERR_MESSAGE         = 6;
     TYPE_KBAR_ARR            = 7;
+    TYPE_FUTURE_DETAIL       = 8;
 }
 
 message WSMessage {
@@ -24,7 +25,23 @@ message WSMessage {
         WSAssitStatus assit_status              = 7;
         WSErrMessage err_message                = 8;
         WSHistoryKbarMessage history_kbar       = 9;
+        WSFutureDetail future_detail            = 10;
     }
+}
+
+message WSFutureDetail {
+    string code            = 1;
+    string symbol          = 2;
+    string name            = 3;
+    string category        = 4;
+    string delivery_month  = 5;
+    string delivery_date   = 6;
+    string underlying_kind = 7;
+    int64 unit             = 8;
+    double limit_up        = 9;
+    double limit_down      = 10;
+    double reference       = 11;
+    string update_date     = 12;
 }
 
 message WSErrMessage {
