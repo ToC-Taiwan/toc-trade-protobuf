@@ -13,6 +13,7 @@ service HistoryDataInterface {
     rpc GetStockTSEHistoryTick(Date) returns (HistoryTickResponse) {}
     rpc GetStockTSEHistoryKbar(Date) returns (HistoryKbarResponse) {}
     rpc GetStockTSEHistoryClose(Date) returns (HistoryCloseResponse) {}
+    rpc GetOTCHistoryKbar(Date) returns (HistoryKbarResponse) {}
 
     rpc GetFutureHistoryTick(FutureCodeArrWithDate) returns (HistoryTickResponse) {}
     rpc GetFutureHistoryClose(FutureCodeArrWithDate) returns (HistoryCloseResponse) {}
