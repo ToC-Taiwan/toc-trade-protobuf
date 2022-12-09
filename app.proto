@@ -3,29 +3,27 @@ package sinopac_forwarder;
 option go_package = "./pb";
 
 enum WSType {
-    TYPE_FUTURE_TICK         = 0;
-    TYPE_FUTURE_ORDER        = 1;
-    TYPE_PERIOD_TRADE_VOLUME = 2;
-    TYPE_TRADE_INDEX         = 3;
-    TYPE_FUTURE_POSITION     = 4;
-    TYPE_ASSIST_STATUS       = 5;
-    TYPE_ERR_MESSAGE         = 6;
-    TYPE_KBAR_ARR            = 7;
-    TYPE_FUTURE_DETAIL       = 8;
+    TYPE_FUTURE_TICK     = 0;
+    TYPE_FUTURE_ORDER    = 1;
+    TYPE_TRADE_INDEX     = 2;
+    TYPE_FUTURE_POSITION = 3;
+    TYPE_ASSIST_STATUS   = 4;
+    TYPE_ERR_MESSAGE     = 5;
+    TYPE_KBAR_ARR        = 6;
+    TYPE_FUTURE_DETAIL   = 7;
 }
 
 message WSMessage {
     WSType type = 1;
     oneof data {
-        WSFutureTick future_tick                = 2;
-        WSFutureOrder future_order              = 3;
-        WSPeriodTradeVolume period_trade_volume = 4;
-        WSTradeIndex trade_index                = 5;
-        WSFuturePosition future_position        = 6;
-        WSAssitStatus assit_status              = 7;
-        WSErrMessage err_message                = 8;
-        WSHistoryKbarMessage history_kbar       = 9;
-        WSFutureDetail future_detail            = 10;
+        WSFutureTick future_tick          = 2;
+        WSFutureOrder future_order        = 3;
+        WSTradeIndex trade_index          = 5;
+        WSFuturePosition future_position  = 6;
+        WSAssitStatus assit_status        = 7;
+        WSErrMessage err_message          = 8;
+        WSHistoryKbarMessage history_kbar = 9;
+        WSFutureDetail future_detail      = 10;
     }
 }
 
@@ -85,18 +83,6 @@ message WSFutureTick {
     int64 chg_type           = 16;
     double price_chg         = 17;
     double pct_chg           = 18;
-}
-
-message OutInVolume {
-    int64 out_volume = 1;
-    int64 in_volume  = 2;
-}
-
-message WSPeriodTradeVolume {
-    OutInVolume first_period  = 1;
-    OutInVolume second_period = 2;
-    OutInVolume third_period  = 3;
-    OutInVolume fourth_period = 4;
 }
 
 message WSTradeIndex {
