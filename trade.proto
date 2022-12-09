@@ -12,8 +12,8 @@ service TradeInterface {
     rpc SellFirstStock(StockOrderDetail) returns (TradeResult) {}
     rpc CancelStock(OrderID) returns (TradeResult) {}
 
-    rpc GetLocalOrderStatusArr(google.protobuf.Empty) returns (OrderStatusArr) {}
-    rpc GetSimulateOrderStatusArr(google.protobuf.Empty) returns (OrderStatusArr) {}
+    rpc GetLocalOrderStatusArr(google.protobuf.Empty) returns (google.protobuf.Empty) {}
+    rpc GetSimulateOrderStatusArr(google.protobuf.Empty) returns (google.protobuf.Empty) {}
 
     rpc GetOrderStatusByID(OrderID) returns (TradeResult) {}
     rpc GetNonBlockOrderStatusArr(google.protobuf.Empty) returns (ErrorMessage) {}
