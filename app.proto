@@ -86,36 +86,15 @@ message WSFutureTick {
 }
 
 message WSTradeIndex {
-    WSStockSnapShot tse = 1;
-    WSStockSnapShot otc = 2;
-    WSYahooPrice nasdaq = 3;
-    WSYahooPrice nf     = 4;
+    WSIndexStatus tse    = 1;
+    WSIndexStatus otc    = 2;
+    WSIndexStatus nasdaq = 3;
+    WSIndexStatus nf     = 4;
 }
 
-message WSStockSnapShot {
-    string stock_num        = 1;
-    string stock_name       = 2;
-    string snap_time        = 3;
-    double open             = 4;
-    double high             = 5;
-    double low              = 6;
-    double close            = 7;
-    string tick_type        = 8;
-    double price_chg        = 9;
-    double pct_chg          = 10;
-    string chg_type         = 11;
-    int64 volume            = 12;
-    int64 volume_sum        = 13;
-    int64 amount            = 14;
-    int64 amount_sum        = 15;
-    double yesterday_volume = 16;
-    double volume_ratio     = 17;
-}
-
-message WSYahooPrice {
-    double last       = 1;
-    double price      = 2;
-    string updated_at = 3;
+message WSIndexStatus {
+    int64 break_count = 1;
+    double price_chg  = 2;
 }
 
 message WSFuturePosition {
