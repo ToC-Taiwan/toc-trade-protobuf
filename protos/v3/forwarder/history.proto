@@ -1,8 +1,9 @@
-syntax = "proto3";
-package sinopac_forwarder;
+syntax            = "proto3";
 option go_package = "./pb";
 
 import "common.proto";
+
+package toc_python_forwarder;
 
 service HistoryDataInterface {
     rpc GetStockHistoryTick(StockNumArrWithDate) returns (HistoryTickResponse) {}

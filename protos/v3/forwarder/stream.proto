@@ -1,10 +1,10 @@
-syntax = "proto3";
-package sinopac_forwarder;
-import "google/protobuf/empty.proto";
-;
+syntax            = "proto3";
 option go_package = "./pb";
 
+import "google/protobuf/empty.proto";
 import "common.proto";
+
+package toc_python_forwarder;
 
 service StreamDataInterface {
     rpc GetStockSnapshotByNumArr(StockNumArr) returns (SnapshotResponse) {}

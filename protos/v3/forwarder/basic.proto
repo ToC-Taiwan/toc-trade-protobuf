@@ -1,7 +1,9 @@
-syntax = "proto3";
-package sinopac_forwarder;
-import "google/protobuf/empty.proto";
+syntax            = "proto3";
 option go_package = "./pb";
+
+import "google/protobuf/empty.proto";
+
+package toc_python_forwarder;
 
 service BasicDataInterface {
     rpc GetAllStockDetail(google.protobuf.Empty) returns (StockDetailResponse) {}

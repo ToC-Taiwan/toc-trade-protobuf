@@ -10,27 +10,16 @@ compile-go:  ### compile-go
 	--go-grpc_out=gen/go \
 	--go-grpc_opt=paths=source_relative \
 	--proto_path=protos/v3/app \
-	--proto_path=protos/v3/basic \
-	--proto_path=protos/v3/common \
-	--proto_path=protos/v3/health \
-	--proto_path=protos/v3/history \
-	--proto_path=protos/v3/stream \
-	--proto_path=protos/v3/trade \
+	--proto_path=protos/v3/forwarder \
 	./protos/v3/*/*.proto
 .PHONY: compile-go
 
 compile-py:  ### compile-py
-	@rm -rf gen/python && mkdir -p gen/python && mkdir -p gen/python/pyi && mkdir -p gen/python/grpc
+	@rm -rf gen/python && mkdir -p gen/python
 	@python3 -m grpc_tools.protoc \
 	--python_out=gen/python \
-	--pyi_out=gen/python/pyi \
-	--grpc_python_out=gen/python/grpc \
+	--grpc_python_out=gen/python \
 	--proto_path=protos/v3/app \
-	--proto_path=protos/v3/basic \
-	--proto_path=protos/v3/common \
-	--proto_path=protos/v3/health \
-	--proto_path=protos/v3/history \
-	--proto_path=protos/v3/stream \
-	--proto_path=protos/v3/trade \
+	--proto_path=protos/v3/forwarder \
 	./protos/v3/*/*.proto
 .PHONY: compile-py
