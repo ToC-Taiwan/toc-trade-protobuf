@@ -2,7 +2,7 @@ syntax            = "proto3";
 option go_package = "./pb";
 
 import "google/protobuf/empty.proto";
-import "common.proto";
+import "entity.proto";
 
 package toc_python_forwarder;
 
@@ -12,18 +12,28 @@ service TradeInterface {
     rpc SellFirstStock(StockOrderDetail) returns (TradeResult) {}
     rpc CancelStock(OrderID) returns (TradeResult) {}
 
-    rpc GetLocalOrderStatusArr(google.protobuf.Empty) returns (google.protobuf.Empty) {}
-    rpc GetSimulateOrderStatusArr(google.protobuf.Empty) returns (google.protobuf.Empty) {}
-
-    rpc GetOrderStatusByID(OrderID) returns (TradeResult) {}
-    rpc GetNonBlockOrderStatusArr(google.protobuf.Empty) returns (ErrorMessage) {}
-
     rpc BuyFuture(FutureOrderDetail) returns (TradeResult) {}
     rpc SellFuture(FutureOrderDetail) returns (TradeResult) {}
     rpc SellFirstFuture(FutureOrderDetail) returns (TradeResult) {}
     rpc CancelFuture(FutureOrderID) returns (TradeResult) {}
 
+    rpc GetLocalOrderStatusArr(google.protobuf.Empty) returns (google.protobuf.Empty) {}
+    rpc GetSimulateOrderStatusArr(google.protobuf.Empty) returns (google.protobuf.Empty) {}
+    rpc GetOrderStatusByID(OrderID) returns (TradeResult) {}
+    rpc GetNonBlockOrderStatusArr(google.protobuf.Empty) returns (ErrorMessage) {}
+
     rpc GetFuturePosition(google.protobuf.Empty) returns (FuturePositionArr) {}
+
+    rpc SubscribeStockTick(StockNumArr) returns (SubscribeResponse) {}
+    rpc UnSubscribeStockTick(StockNumArr) returns (SubscribeResponse) {}
+    rpc SubscribeStockBidAsk(StockNumArr) returns (SubscribeResponse) {}
+    rpc UnSubscribeStockBidAsk(StockNumArr) returns (SubscribeResponse) {}
+    rpc SubscribeFutureTick(FutureCodeArr) returns (SubscribeResponse) {}
+    rpc UnSubscribeFutureTick(FutureCodeArr) returns (SubscribeResponse) {}
+    rpc SubscribeFutureBidAsk(FutureCodeArr) returns (SubscribeResponse) {}
+    rpc UnSubscribeFutureBidAsk(FutureCodeArr) returns (SubscribeResponse) {}
+    rpc UnSubscribeStockAllTick(google.protobuf.Empty) returns (ErrorMessage) {}
+    rpc UnSubscribeStockAllBidAsk(google.protobuf.Empty) returns (ErrorMessage) {}
 }
 
 // code (str): contract id.
@@ -87,4 +97,8 @@ message OrderStatus {
     int64 quantity    = 5;
     string order_id   = 6;
     string order_time = 7;
+}
+
+message SubscribeResponse {
+    repeated string fail_arr = 1;
 }

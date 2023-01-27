@@ -1,7 +1,7 @@
 syntax            = "proto3";
 option go_package = "./pb";
 
-import "common.proto";
+import "entity.proto";
 
 package toc_python_forwarder;
 
@@ -11,14 +11,14 @@ service HistoryDataInterface {
     rpc GetStockHistoryClose(StockNumArrWithDate) returns (HistoryCloseResponse) {}
     rpc GetStockHistoryCloseByDateArr(StockNumArrWithDateArr) returns (HistoryCloseResponse) {}
 
+    rpc GetFutureHistoryTick(FutureCodeArrWithDate) returns (HistoryTickResponse) {}
+    rpc GetFutureHistoryKbar(FutureCodeArrWithDate) returns (HistoryKbarResponse) {}
+    rpc GetFutureHistoryClose(FutureCodeArrWithDate) returns (HistoryCloseResponse) {}
+
     rpc GetStockTSEHistoryTick(Date) returns (HistoryTickResponse) {}
     rpc GetStockTSEHistoryKbar(Date) returns (HistoryKbarResponse) {}
     rpc GetStockTSEHistoryClose(Date) returns (HistoryCloseResponse) {}
     rpc GetOTCHistoryKbar(Date) returns (HistoryKbarResponse) {}
-
-    rpc GetFutureHistoryTick(FutureCodeArrWithDate) returns (HistoryTickResponse) {}
-    rpc GetFutureHistoryClose(FutureCodeArrWithDate) returns (HistoryCloseResponse) {}
-    rpc GetFutureHistoryKbar(FutureCodeArrWithDate) returns (HistoryKbarResponse) {}
 }
 
 message HistoryTickResponse {

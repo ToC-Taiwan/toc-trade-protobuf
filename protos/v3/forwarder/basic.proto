@@ -6,6 +6,8 @@ import "google/protobuf/empty.proto";
 package toc_python_forwarder;
 
 service BasicDataInterface {
+    rpc Heartbeat(stream BeatMessage) returns (stream BeatMessage);
+    rpc Terminate(google.protobuf.Empty) returns (google.protobuf.Empty);
     rpc GetAllStockDetail(google.protobuf.Empty) returns (StockDetailResponse) {}
     rpc GetAllFutureDetail(google.protobuf.Empty) returns (FutureDetailResponse) {}
 }
@@ -41,4 +43,8 @@ message FutureDetailMessage {
     double limit_down      = 10;
     double reference       = 11;
     string update_date     = 12;
+}
+
+message BeatMessage {
+    string message = 1;
 }
