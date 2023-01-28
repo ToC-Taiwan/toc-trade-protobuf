@@ -33,9 +33,6 @@ service HistoryDataInterface {
 
     // GetStockTSEHistoryClose
     rpc GetStockTSEHistoryClose(Date) returns (HistoryCloseResponse) {}
-
-    // GetStockOTCHistoryKbar
-    rpc GetStockOTCHistoryKbar(Date) returns (HistoryKbarResponse) {}
 }
 
 // StockNumArrWithDate
