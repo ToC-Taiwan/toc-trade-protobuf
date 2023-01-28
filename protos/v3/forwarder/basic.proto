@@ -1,21 +1,40 @@
 syntax            = "proto3";
 option go_package = "./pb";
+package toc_python_forwarder;
 
 import "google/protobuf/empty.proto";
 
-package toc_python_forwarder;
-
+// BasicDataInterface is the interface for basic data service
 service BasicDataInterface {
+    // Heartbeat is the heartbeat function
     rpc Heartbeat(stream BeatMessage) returns (stream BeatMessage);
+
+    // Terminate is the terminate function
     rpc Terminate(google.protobuf.Empty) returns (google.protobuf.Empty);
+
+    // GetAllStockDetail is the function to get stock detail
     rpc GetAllStockDetail(google.protobuf.Empty) returns (StockDetailResponse) {}
+
+    // GetAllFutureDetail is the function to get future detail
     rpc GetAllFutureDetail(google.protobuf.Empty) returns (FutureDetailResponse) {}
 }
 
+// BeatMessage is the message for heartbeat
+message BeatMessage {
+    string message = 1;
+}
+
+// StockDetailResponse is the response for stock detail
 message StockDetailResponse {
     repeated StockDetailMessage stock = 1;
 }
 
+// FutureDetailResponse is the response for future detail
+message FutureDetailResponse {
+    repeated FutureDetailMessage future = 1;
+}
+
+// StockDetailMessage is the message for stock detail
 message StockDetailMessage {
     string exchange    = 1;
     string category    = 2;
@@ -26,10 +45,7 @@ message StockDetailMessage {
     string day_trade   = 7;
 }
 
-message FutureDetailResponse {
-    repeated FutureDetailMessage future = 1;
-}
-
+// FutureDetailMessage is the message for future detail
 message FutureDetailMessage {
     string code            = 1;
     string symbol          = 2;
@@ -43,8 +59,4 @@ message FutureDetailMessage {
     double limit_down      = 10;
     double reference       = 11;
     string update_date     = 12;
-}
-
-message BeatMessage {
-    string message = 1;
 }

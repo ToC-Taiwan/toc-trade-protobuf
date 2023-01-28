@@ -1,47 +1,53 @@
 syntax            = "proto3";
 option go_package = "./pb";
+package toc_python_forwarder;
 
 import "google/protobuf/empty.proto";
 import "entity.proto";
 
-package toc_python_forwarder;
-
+// TradeInterface is the interface for trade service
 service TradeInterface {
+    // BuyStock is the interface for buying stock
     rpc BuyStock(StockOrderDetail) returns (TradeResult) {}
+
+    // SellStock is the interface for selling stock
     rpc SellStock(StockOrderDetail) returns (TradeResult) {}
+
+    // SellFirstStock is the interface for selling first stock
     rpc SellFirstStock(StockOrderDetail) returns (TradeResult) {}
+
+    // CancelStock is the interface for canceling stock
     rpc CancelStock(OrderID) returns (TradeResult) {}
 
+    // BuyFuture is the interface for buying future
     rpc BuyFuture(FutureOrderDetail) returns (TradeResult) {}
+
+    // SellFuture is the interface for selling future
     rpc SellFuture(FutureOrderDetail) returns (TradeResult) {}
+
+    // SellFirstFuture is the interface for selling first future
     rpc SellFirstFuture(FutureOrderDetail) returns (TradeResult) {}
+
+    // CancelFuture is the interface for canceling future
     rpc CancelFuture(FutureOrderID) returns (TradeResult) {}
 
+    // GetLocalOrderStatusArr is the interface for getting local order status array
     rpc GetLocalOrderStatusArr(google.protobuf.Empty) returns (google.protobuf.Empty) {}
+
+    // GetSimulateOrderStatusArr is the interface for getting simulate order status array
     rpc GetSimulateOrderStatusArr(google.protobuf.Empty) returns (google.protobuf.Empty) {}
+
+    // GetOrderStatusByID is the interface for getting order status by id
     rpc GetOrderStatusByID(OrderID) returns (TradeResult) {}
+
+    // GetNonBlockOrderStatusArr is the interface for getting non block order status array
     rpc GetNonBlockOrderStatusArr(google.protobuf.Empty) returns (ErrorMessage) {}
 
+    // GetFuturePosition is the interface for getting future position
     rpc GetFuturePosition(google.protobuf.Empty) returns (FuturePositionArr) {}
-
-    rpc SubscribeStockTick(StockNumArr) returns (SubscribeResponse) {}
-    rpc UnSubscribeStockTick(StockNumArr) returns (SubscribeResponse) {}
-    rpc SubscribeStockBidAsk(StockNumArr) returns (SubscribeResponse) {}
-    rpc UnSubscribeStockBidAsk(StockNumArr) returns (SubscribeResponse) {}
-    rpc SubscribeFutureTick(FutureCodeArr) returns (SubscribeResponse) {}
-    rpc UnSubscribeFutureTick(FutureCodeArr) returns (SubscribeResponse) {}
-    rpc SubscribeFutureBidAsk(FutureCodeArr) returns (SubscribeResponse) {}
-    rpc UnSubscribeFutureBidAsk(FutureCodeArr) returns (SubscribeResponse) {}
-    rpc UnSubscribeStockAllTick(google.protobuf.Empty) returns (ErrorMessage) {}
-    rpc UnSubscribeStockAllBidAsk(google.protobuf.Empty) returns (ErrorMessage) {}
 }
 
-// code (str): contract id.
-// direction (Action): action. {Buy, Sell}
-// quantity (int): quantity.
-// price (float): the average price.
-// last_price (float): last price.
-// pnl (float): unrealized profit.
+// FuturePosition is the struct for future position
 message FuturePosition {
     string code       = 1;
     string direction  = 2;
@@ -51,10 +57,12 @@ message FuturePosition {
     double pnl        = 6;
 }
 
+// FuturePositionArr is the struct for future position array
 message FuturePositionArr {
     repeated FuturePosition position_arr = 1;
 }
 
+// StockOrderDetail is the struct for stock order detail
 message StockOrderDetail {
     string stock_num = 1;
     double price     = 2;
@@ -62,6 +70,7 @@ message StockOrderDetail {
     bool simulate    = 4;
 }
 
+// FutureOrderDetail is the struct for future order detail
 message FutureOrderDetail {
     string code    = 1;
     double price   = 2;
@@ -69,36 +78,26 @@ message FutureOrderDetail {
     bool simulate  = 4;
 }
 
+// TradeResult is the struct for trade result
 message TradeResult {
     string order_id = 1;
     string status   = 2;
     string error    = 3;
 }
 
+// OrderID is the struct for order id
 message OrderID {
     string order_id = 1;
     bool simulate   = 2;
 }
 
+// FutureOrderID is the struct for future order id
 message FutureOrderID {
     string order_id = 1;
     bool simulate   = 2;
 }
 
-message OrderStatusArr {
-    repeated OrderStatus data = 1;
-}
-
-message OrderStatus {
-    string status     = 1;
-    string code       = 2;
-    string action     = 3;
-    double price      = 4;
-    int64 quantity    = 5;
-    string order_id   = 6;
-    string order_time = 7;
-}
-
+// SubscribeResponse is the struct for subscribe response
 message SubscribeResponse {
     repeated string fail_arr = 1;
 }

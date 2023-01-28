@@ -1,30 +1,77 @@
 syntax            = "proto3";
 option go_package = "./pb";
-
-import "entity.proto";
-
 package toc_python_forwarder;
 
+// HistoryDataInterface is the interface for history data
 service HistoryDataInterface {
+    // GetStockHistoryTick
     rpc GetStockHistoryTick(StockNumArrWithDate) returns (HistoryTickResponse) {}
+
+    // GetStockHistoryKbar
     rpc GetStockHistoryKbar(StockNumArrWithDate) returns (HistoryKbarResponse) {}
+
+    // GetStockHistoryClose
     rpc GetStockHistoryClose(StockNumArrWithDate) returns (HistoryCloseResponse) {}
+
+    // GetStockHistoryCloseByDateArr
     rpc GetStockHistoryCloseByDateArr(StockNumArrWithDateArr) returns (HistoryCloseResponse) {}
 
+    // GetFutureHistoryTick
     rpc GetFutureHistoryTick(FutureCodeArrWithDate) returns (HistoryTickResponse) {}
+
+    // GetFutureHistoryKbar
     rpc GetFutureHistoryKbar(FutureCodeArrWithDate) returns (HistoryKbarResponse) {}
+
+    // GetFutureHistoryClose
     rpc GetFutureHistoryClose(FutureCodeArrWithDate) returns (HistoryCloseResponse) {}
 
+    // GetStockTSEHistoryTick
     rpc GetStockTSEHistoryTick(Date) returns (HistoryTickResponse) {}
+
+    // GetStockTSEHistoryKbar
     rpc GetStockTSEHistoryKbar(Date) returns (HistoryKbarResponse) {}
+
+    // GetStockTSEHistoryClose
     rpc GetStockTSEHistoryClose(Date) returns (HistoryCloseResponse) {}
-    rpc GetOTCHistoryKbar(Date) returns (HistoryKbarResponse) {}
+
+    // GetStockOTCHistoryKbar
+    rpc GetStockOTCHistoryKbar(Date) returns (HistoryKbarResponse) {}
 }
 
+// StockNumArrWithDate
+message StockNumArrWithDate {
+    repeated string stock_num_arr = 1;
+    string date                   = 2;
+}
+
+// FutureCodeArrWithDate
+message FutureCodeArrWithDate {
+    repeated string future_code_arr = 1;
+    string date                     = 2;
+}
+
+// StockNumArrWithDateArr
+message StockNumArrWithDateArr {
+    repeated string stock_num_arr = 1;
+    repeated string date_arr      = 2;
+}
+
+// HistoryTickResponse
 message HistoryTickResponse {
     repeated HistoryTickMessage data = 1;
 }
 
+// HistoryKbarResponse
+message HistoryKbarResponse {
+    repeated HistoryKbarMessage data = 1;
+}
+
+// HistoryCloseResponse
+message HistoryCloseResponse {
+    repeated HistoryCloseMessage data = 1;
+}
+
+// HistoryTickMessage
 message HistoryTickMessage {
     int64 ts         = 1;
     double close     = 2;
@@ -37,10 +84,7 @@ message HistoryTickMessage {
     string code      = 9;
 }
 
-message HistoryKbarResponse {
-    repeated HistoryKbarMessage data = 1;
-}
-
+// HistoryKbarMessage
 message HistoryKbarMessage {
     int64 ts     = 1;
     double close = 2;
@@ -51,12 +95,14 @@ message HistoryKbarMessage {
     string code  = 7;
 }
 
-message HistoryCloseResponse {
-    repeated HistoryCloseMessage data = 1;
-}
-
+// HistoryCloseMessage
 message HistoryCloseMessage {
     string date  = 1;
     string code  = 2;
     double close = 3;
+}
+
+// Date
+message Date {
+    string date = 1;
 }

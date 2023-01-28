@@ -1,0 +1,110 @@
+syntax            = "proto3";
+option go_package = "./pb";
+package toc_python_forwarder;
+
+// EventMessage is the message type for event
+message EventMessage {
+    int64 resp_code   = 1;
+    int64 event_code  = 2;
+    string info       = 3;
+    string event      = 4;
+    string event_time = 5;
+}
+
+// StockRealTimeTickMessage is the message type for stock tick
+message StockRealTimeTickMessage {
+    string code              = 1;
+    string date_time         = 2;
+    double open              = 3;
+    double avg_price         = 4;
+    double close             = 5;
+    double high              = 6;
+    double low               = 7;
+    double amount            = 8;
+    double total_amount      = 9;
+    int64 volume             = 10;
+    int64 total_volume       = 11;
+    int64 tick_type          = 12;
+    int64 chg_type           = 13;
+    double price_chg         = 14;
+    double pct_chg           = 15;
+    int64 bid_side_total_vol = 16;
+    int64 ask_side_total_vol = 17;
+    int64 bid_side_total_cnt = 18;
+    int64 ask_side_total_cnt = 19;
+    bool suspend             = 20;
+    bool simtrade            = 21;
+}
+
+// StockRealTimeBidAskMessage is the message type for stock bid ask
+message StockRealTimeBidAskMessage {
+    string code                 = 1;
+    string date_time            = 2;
+    repeated double bid_price   = 3;
+    repeated int64 bid_volume   = 4;
+    repeated int64 diff_bid_vol = 5;
+    repeated double ask_price   = 6;
+    repeated int64 ask_volume   = 7;
+    repeated int64 diff_ask_vol = 8;
+    bool suspend                = 9;
+    bool simtrade               = 10;
+}
+
+// FutureRealTimeTickMessage is the message type for stock trade
+message FutureRealTimeTickMessage {
+    string code              = 1;
+    string date_time         = 2;
+    double open              = 3;
+    double underlying_price  = 4;
+    int64 bid_side_total_vol = 5;
+    int64 ask_side_total_vol = 6;
+    double avg_price         = 7;
+    double close             = 8;
+    double high              = 9;
+    double low               = 10;
+    double amount            = 11;
+    double total_amount      = 12;
+    int64 volume             = 13;
+    int64 total_volume       = 14;
+    int64 tick_type          = 15;
+    int64 chg_type           = 16;
+    double price_chg         = 17;
+    double pct_chg           = 18;
+    bool simtrade            = 19;
+}
+
+// FutureRealTimeBidAskMessage is the message type for future bid ask
+message FutureRealTimeBidAskMessage {
+    string code                    = 1;
+    string date_time               = 2;
+    int64 bid_total_vol            = 3;
+    int64 ask_total_vol            = 4;
+    repeated double bid_price      = 5;
+    repeated int64 bid_volume      = 6;
+    repeated int64 diff_bid_vol    = 7;
+    repeated double ask_price      = 8;
+    repeated int64 ask_volume      = 9;
+    repeated int64 diff_ask_vol    = 10;
+    double first_derived_bid_price = 11;
+    double first_derived_ask_price = 12;
+    int64 first_derived_bid_vol    = 13;
+    int64 first_derived_ask_vol    = 14;
+    double underlying_price        = 15;
+    bool simtrade                  = 16;
+}
+
+// OrderStatusArr is the message type for order status
+message OrderStatusArr {
+    repeated OrderStatus data = 1;
+}
+
+// OrderStatus is the message type for order status
+message OrderStatus {
+    string status     = 1;
+    string code       = 2;
+    string action     = 3;
+    double price      = 4;
+    int64 quantity    = 5;
+    string order_id   = 6;
+    string order_time = 7;
+}
