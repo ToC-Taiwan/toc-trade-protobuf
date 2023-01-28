@@ -96,8 +96,3 @@ message FutureOrderID {
     string order_id = 1;
     bool simulate   = 2;
 }
-
-// SubscribeResponse is the struct for subscribe response
-message SubscribeResponse {
-    repeated string fail_arr = 1;
-}
