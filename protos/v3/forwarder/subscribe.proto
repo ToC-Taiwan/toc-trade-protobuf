@@ -31,11 +31,11 @@ service SubscribeDataInterface {
     // UnSubscribeFutureBidAsk is the interface for unsubscribe stock all bid ask
     rpc UnSubscribeFutureBidAsk(FutureCodeArr) returns (SubscribeResponse) {}
 
-    // UnSubscribeStockAllTick is the interface for unsubscribe stock all tick
-    rpc UnSubscribeStockAllTick(google.protobuf.Empty) returns (ErrorMessage) {}
+    // UnSubscribeAllTick is the interface for unsubscribe stock all tick
+    rpc UnSubscribeAllTick(google.protobuf.Empty) returns (ErrorMessage) {}
 
     // UnSubscribeStockAllBidAsk is the interface for unsubscribe stock all bid ask
-    rpc UnSubscribeStockAllBidAsk(google.protobuf.Empty) returns (ErrorMessage) {}
+    rpc UnSubscribeAllBidAsk(google.protobuf.Empty) returns (ErrorMessage) {}
 }
 
 // SubscribeResponse is the response for subscribe
