@@ -60,7 +60,6 @@ message WSOrder {
     double price      = 5;
     int64 quantity    = 6;
     string trade_time = 7;
-    string tick_time  = 8;
 }
 
 message WSFutureTick {
