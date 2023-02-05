@@ -61,7 +61,6 @@ message WSOrder {
     int64 quantity    = 6;
     string trade_time = 7;
     string tick_time  = 8;
-    string group_id   = 9;
 }
 
 message WSFutureTick {
