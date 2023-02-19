@@ -31,6 +31,18 @@ service TradeInterface {
     // CancelFuture is the interface for canceling future
     rpc CancelFuture(FutureOrderID) returns (TradeResult) {}
 
+    // BuyFuture is the interface for buying future
+    rpc BuyOption(OptionOrderDetail) returns (TradeResult) {}
+
+    // SellFuture is the interface for selling future
+    rpc SellOption(OptionOrderDetail) returns (TradeResult) {}
+
+    // SellFirstFuture is the interface for selling first future
+    rpc SellFirstOption(OptionOrderDetail) returns (TradeResult) {}
+
+    // CancelFuture is the interface for canceling future
+    rpc CancelOption(OptionOrderID) returns (TradeResult) {}
+
     // GetLocalOrderStatusArr is the interface for getting local order status array
     rpc GetLocalOrderStatusArr(google.protobuf.Empty) returns (google.protobuf.Empty) {}
 
@@ -78,6 +90,14 @@ message FutureOrderDetail {
     bool simulate  = 4;
 }
 
+// OptionOrderDetail is the struct for option order detail
+message OptionOrderDetail {
+    string code    = 1;
+    double price   = 2;
+    int64 quantity = 3;
+    bool simulate  = 4;
+}
+
 // TradeResult is the struct for trade result
 message TradeResult {
     string order_id = 1;
@@ -93,6 +113,12 @@ message OrderID {
 
 // FutureOrderID is the struct for future order id
 message FutureOrderID {
+    string order_id = 1;
+    bool simulate   = 2;
+}
+
+// OptionOrderID is the struct for option order id
+message OptionOrderID {
     string order_id = 1;
     bool simulate   = 2;
 }
