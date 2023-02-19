@@ -17,6 +17,9 @@ service BasicDataInterface {
 
     // GetAllFutureDetail is the function to get future detail
     rpc GetAllFutureDetail(google.protobuf.Empty) returns (FutureDetailResponse) {}
+
+    // GetAllOptionDetail is the function to get option detail
+    rpc GetAllOptionDetail(google.protobuf.Empty) returns (OptionDetailResponse) {}
 }
 
 // BeatMessage is the message for heartbeat
@@ -32,6 +35,11 @@ message StockDetailResponse {
 // FutureDetailResponse is the response for future detail
 message FutureDetailResponse {
     repeated FutureDetailMessage future = 1;
+}
+
+// OptionDetailResponse is the response for option detail
+message OptionDetailResponse {
+    repeated OptionDetailMessage option = 1;
 }
 
 // StockDetailMessage is the message for stock detail
@@ -59,4 +67,22 @@ message FutureDetailMessage {
     double limit_down      = 10;
     double reference       = 11;
     string update_date     = 12;
+}
+
+// OptionDetailMessage is the message for option detail
+message OptionDetailMessage {
+    string code            = 1;
+    string symbol          = 2;
+    string name            = 3;
+    string category        = 4;
+    string delivery_month  = 5;
+    string delivery_date   = 6;
+    double strike_price    = 7;
+    string option_right    = 8;
+    string underlying_kind = 9;
+    int64 unit             = 10;
+    double limit_up        = 11;
+    double limit_down      = 12;
+    double reference       = 13;
+    string update_date     = 14;
 }
