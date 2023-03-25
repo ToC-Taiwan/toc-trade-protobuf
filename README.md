@@ -5,6 +5,7 @@
 - cp settings.template.json .vscode/settings.json
 
 ```sh
+mkdir .vscode
 home_path="$HOME"
 echo '{
     "protoc": {

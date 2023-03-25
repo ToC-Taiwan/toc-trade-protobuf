@@ -57,6 +57,15 @@ service TradeInterface {
 
     // GetFuturePosition is the interface for getting future position
     rpc GetFuturePosition(google.protobuf.Empty) returns (FuturePositionArr) {}
+
+    // GetSettlement is the interface for getting settlement
+    rpc GetSettlement(google.protobuf.Empty) returns (SettlementV1) {}
+
+    // GetAccountBalance is the interface for getting account balance
+    rpc GetAccountBalance(google.protobuf.Empty) returns (AccountBalance) {}
+
+    // GetMargin is the interface for getting margin
+    rpc GetMargin(google.protobuf.Empty) returns (Margin) {}
 }
 
 // FuturePosition is the struct for future position
@@ -121,4 +130,79 @@ message FutureOrderID {
 message OptionOrderID {
     string order_id = 1;
     bool simulate   = 2;
+}
+
+// status(FetchStatus): 資料回傳狀態
+// yesterday_balance(float): 前日餘額
+// today_balance(float): 今日餘額
+// deposit_withdrawal(float): 存提
+// fee(float): 手續費
+// tax(float): 期交稅
+// initial_margin(float): 原始保證金
+// maintenance_margin(float): 維持保證金
+// margin_call(float): 追繳保證金
+// risk_indicator(float): 風險指標
+// royalty_revenue_expenditure(float): 權利金收入與支出
+// equity(float): 權益數
+// equity_amount(float): 權益總值
+// option_openbuy_market_value(float): 未沖銷買方選擇權市值
+// option_opensell_market_value(float): 未沖銷賣方選擇權市值
+// option_open_position(float): 參考未平倉選擇權損益
+// option_settle_profitloss(float): 參考選擇權平倉損益
+// future_open_position(float): 未沖銷期貨浮動損益
+// today_future_open_position(float): 參考當日未沖銷期貨浮動損益
+// future_settle_profitloss(float): 期貨平倉損益
+// available_margin(float): 可動用(出金) 保證金
+// plus_margin(float): 依「加收保證金指標」所加收之保證金
+// plus_margin_indicator(float): 加收保證金指標
+// security_collateral_amount(float): 有價證券抵繳總額
+// order_margin_premium(float): 委託保證金及委託權利金
+// collateral_amount(float): 有價品額
+message Margin {
+    string status                       = 1;
+    double yesterday_balance            = 2;
+    double today_balance                = 3;
+    double deposit_withdrawal           = 4;
+    double fee                          = 5;
+    double tax                          = 6;
+    double initial_margin               = 7;
+    double maintenance_margin           = 8;
+    double margin_call                  = 9;
+    double risk_indicator               = 10;
+    double royalty_revenue_expenditure  = 11;
+    double equity                       = 12;
+    double equity_amount                = 13;
+    double option_openbuy_market_value  = 14;
+    double option_opensell_market_value = 15;
+    double option_open_position         = 16;
+    double option_settle_profitloss     = 17;
+    double future_open_position         = 18;
+    double today_future_open_position   = 19;
+    double future_settle_profitloss     = 20;
+    double available_margin             = 21;
+    double plus_margin                  = 22;
+    double plus_margin_indicator        = 23;
+    double security_collateral_amount   = 24;
+    double order_margin_premium         = 25;
+    double collateral_amount            = 26;
+}
+
+// status(FetchStatus): 資料回傳狀態
+// acc_balance(float): 餘額
+// date(str): 查詢日期
+// errmsg(str): 錯誤訊息
+message AccountBalance {
+    string status      = 1;
+    double acc_balance = 2;
+    string date        = 3;
+    string errmsg      = 4;
+}
+
+// date(datetime.date): 交割日期
+// amount(float): 交割金額
+// T(int): Tday
+message SettlementV1 {
+    string date   = 1;
+    double amount = 2;
+    int32 T       = 3;
 }
