@@ -59,7 +59,7 @@ service TradeInterface {
     rpc GetFuturePosition(google.protobuf.Empty) returns (FuturePositionArr) {}
 
     // GetSettlement is the interface for getting settlement
-    rpc GetSettlement(google.protobuf.Empty) returns (SettlementV1) {}
+    rpc GetSettlement(google.protobuf.Empty) returns (SettlementV1Message) {}
 
     // GetAccountBalance is the interface for getting account balance
     rpc GetAccountBalance(google.protobuf.Empty) returns (AccountBalance) {}
@@ -205,4 +205,8 @@ message SettlementV1 {
     string date   = 1;
     double amount = 2;
     int32 T       = 3;
+}
+
+message SettlementV1Message {
+    repeated SettlementV1 settlement_v1 = 1;
 }
