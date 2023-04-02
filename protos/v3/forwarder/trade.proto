@@ -59,7 +59,7 @@ service TradeInterface {
     rpc GetFuturePosition(google.protobuf.Empty) returns (FuturePositionArr) {}
 
     // GetSettlement is the interface for getting settlement
-    rpc GetSettlement(google.protobuf.Empty) returns (SettlementV1Message) {}
+    rpc GetSettlement(google.protobuf.Empty) returns (SettlementList) {}
 
     // GetAccountBalance is the interface for getting account balance
     rpc GetAccountBalance(google.protobuf.Empty) returns (AccountBalance) {}
@@ -192,21 +192,18 @@ message Margin {
 // date(str): 查詢日期
 // errmsg(str): 錯誤訊息
 message AccountBalance {
-    string status      = 1;
-    double acc_balance = 2;
-    string date        = 3;
-    string errmsg      = 4;
+    string date    = 1;
+    double balance = 2;
 }
 
 // date(datetime.date): 交割日期
 // amount(float): 交割金額
 // T(int): Tday
-message SettlementV1 {
+message Settlement {
     string date   = 1;
     double amount = 2;
-    int32 T       = 3;
 }
 
-message SettlementV1Message {
-    repeated SettlementV1 settlement_v1 = 1;
+message SettlementList {
+    repeated Settlement settlement = 1;
 }
