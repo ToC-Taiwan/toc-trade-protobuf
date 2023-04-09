@@ -58,6 +58,9 @@ service TradeInterface {
     // GetFuturePosition is the interface for getting future position
     rpc GetFuturePosition(google.protobuf.Empty) returns (FuturePositionArr) {}
 
+    // GetStockPosition is the interface for getting stock position
+    rpc GetStockPosition(google.protobuf.Empty) returns (StockPositionArr) {}
+
     // GetSettlement is the interface for getting settlement
     rpc GetSettlement(google.protobuf.Empty) returns (SettlementList) {}
 
@@ -81,6 +84,40 @@ message FuturePosition {
 // FuturePositionArr is the struct for future position array
 message FuturePositionArr {
     repeated FuturePosition position_arr = 1;
+}
+
+// id (int): position id
+// code (str): contract id
+// direction (Action): action {Buy, Sell}
+// quantity (int): quantity
+// price (float): the average price
+// last_price (float): last price
+// pnl (float): unrealized profit
+// yd_quantity (int): yesterday
+// cond (StockOrderCond): Default Cash {Cash(現股), Netting(餘額交割), MarginTrading(融資),ShortSelling(融券), Emerging(興櫃)}
+// margin_purchase_amount (int): margin_purchase_amount
+// collateral (int): collateral
+// short_sale_margin (int): short_sale_margin
+// interest (int): interest
+message StockPosition {
+    int32 id                     = 1;
+    string code                  = 2;
+    Action direction             = 3;
+    int32 quantity               = 4;
+    double price                 = 5;
+    double last_price            = 6;
+    double pnl                   = 7;
+    int32 yd_quantity            = 8;
+    StockOrderCond cond          = 9;
+    int32 margin_purchase_amount = 10;
+    int32 collateral             = 11;
+    int32 short_sale_margin      = 12;
+    int32 interest               = 13;
+}
+
+// StockPositionArr is the struct for stock position array
+message StockPositionArr {
+    repeated StockPosition position_arr = 1;
 }
 
 // StockOrderDetail is the struct for stock order detail
