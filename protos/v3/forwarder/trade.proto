@@ -102,13 +102,13 @@ message FuturePositionArr {
 message StockPosition {
     int32 id                     = 1;
     string code                  = 2;
-    Action direction             = 3;
+    string direction             = 3;
     int32 quantity               = 4;
     double price                 = 5;
     double last_price            = 6;
     double pnl                   = 7;
     int32 yd_quantity            = 8;
-    StockOrderCond cond          = 9;
+    string cond                  = 9;
     int32 margin_purchase_amount = 10;
     int32 collateral             = 11;
     int32 short_sale_margin      = 12;
