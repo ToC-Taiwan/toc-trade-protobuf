@@ -5,6 +5,7 @@ package toc_python_forwarder;
 // StockNumArr
 message StockNumArr {
     repeated string stock_num_arr = 1;
+    bool odd                      = 2;
 }
 
 // FutureNumArr
