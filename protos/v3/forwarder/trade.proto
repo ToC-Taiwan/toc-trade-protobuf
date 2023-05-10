@@ -13,6 +13,12 @@ service TradeInterface {
     // SellStock is the interface for selling stock
     rpc SellStock(StockOrderDetail) returns (TradeResult) {}
 
+    // BuyStock is the interface for buying stock
+    rpc BuyOddStock(OddStockOrderDetail) returns (TradeResult) {}
+
+    // SellStock is the interface for selling stock
+    rpc SellOddStock(OddStockOrderDetail) returns (TradeResult) {}
+
     // SellFirstStock is the interface for selling first stock
     rpc SellFirstStock(StockOrderDetail) returns (TradeResult) {}
 
@@ -126,6 +132,13 @@ message StockOrderDetail {
     double price     = 2;
     int64 quantity   = 3;
     bool simulate    = 4;
+}
+
+// OddStockOrderDetail is the struct for stock order detail
+message OddStockOrderDetail {
+    string stock_num = 1;
+    double price     = 2;
+    int64 quantity   = 3;
 }
 
 // FutureOrderDetail is the struct for future order detail
