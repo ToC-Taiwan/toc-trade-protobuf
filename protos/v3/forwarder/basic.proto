@@ -20,12 +20,20 @@ service BasicDataInterface {
 
     // GetAllOptionDetail is the function to get option detail
     rpc GetAllOptionDetail(google.protobuf.Empty) returns (OptionDetailResponse) {}
+
+    // CheckUsage get shioaji usage
+    rpc CheckUsage(google.protobuf.Empty) returns (ShioajiUsage) {}
 }
 
 // BeatMessage is the message for heartbeat
 message BeatMessage {
     string message = 1;
     string error   = 2;
+}
+
+message ShioajiUsage {
+    int64 connections = 1;
+    int64 bytes       = 2;
 }
 
 // StockDetailResponse is the response for stock detail
