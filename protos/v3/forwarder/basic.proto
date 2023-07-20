@@ -23,6 +23,9 @@ service BasicDataInterface {
 
     // CheckUsage get shioaji usage
     rpc CheckUsage(google.protobuf.Empty) returns (ShioajiUsage) {}
+
+    // LogOut log out
+    rpc LogOut(google.protobuf.Empty) returns (google.protobuf.Empty) {}
 }
 
 // BeatMessage is the message for heartbeat
