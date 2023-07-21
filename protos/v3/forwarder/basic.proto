@@ -25,16 +25,10 @@ service BasicDataInterface {
     rpc CheckUsage(google.protobuf.Empty) returns (ShioajiUsage) {}
 
     // Login log in
-    rpc Login(google.protobuf.Empty) returns (LoginResponse) {}
+    rpc Login(google.protobuf.Empty) returns (google.protobuf.Empty) {}
 
     // Logout log out
     rpc Logout(google.protobuf.Empty) returns (google.protobuf.Empty) {}
-}
-
-// LoginResponse is the message for login response
-message LoginResponse {
-    string message = 1;
-    string error   = 2;
 }
 
 // BeatMessage is the message for heartbeat
