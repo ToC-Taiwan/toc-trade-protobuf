@@ -6,20 +6,8 @@ import "google/protobuf/empty.proto";
 
 // BasicDataInterface is the interface for basic data service
 service BasicDataInterface {
-    // Heartbeat is the heartbeat function
-    rpc Heartbeat(stream BeatMessage) returns (stream BeatMessage);
-
     // Terminate is the terminate function
     rpc Terminate(google.protobuf.Empty) returns (google.protobuf.Empty);
-
-    // GetAllStockDetail is the function to get stock detail
-    rpc GetAllStockDetail(google.protobuf.Empty) returns (StockDetailResponse) {}
-
-    // GetAllFutureDetail is the function to get future detail
-    rpc GetAllFutureDetail(google.protobuf.Empty) returns (FutureDetailResponse) {}
-
-    // GetAllOptionDetail is the function to get option detail
-    rpc GetAllOptionDetail(google.protobuf.Empty) returns (OptionDetailResponse) {}
 
     // CheckUsage get shioaji usage
     rpc CheckUsage(google.protobuf.Empty) returns (ShioajiUsage) {}
@@ -29,6 +17,15 @@ service BasicDataInterface {
 
     // Logout log out
     rpc Logout(google.protobuf.Empty) returns (google.protobuf.Empty) {}
+
+    // GetAllStockDetail is the function to get stock detail
+    rpc GetAllStockDetail(google.protobuf.Empty) returns (StockDetailResponse) {}
+
+    // GetAllFutureDetail is the function to get future detail
+    rpc GetAllFutureDetail(google.protobuf.Empty) returns (FutureDetailResponse) {}
+
+    // GetAllOptionDetail is the function to get option detail
+    rpc GetAllOptionDetail(google.protobuf.Empty) returns (OptionDetailResponse) {}
 }
 
 // BeatMessage is the message for heartbeat
