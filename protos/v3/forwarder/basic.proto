@@ -18,9 +18,6 @@ service BasicDataInterface {
     // Login log in
     rpc Login(google.protobuf.Empty) returns (google.protobuf.Empty) {}
 
-    // Logout log out
-    rpc Logout(google.protobuf.Empty) returns (google.protobuf.Empty) {}
-
     // GetAllStockDetail is the function to get stock detail
     rpc GetAllStockDetail(google.protobuf.Empty) returns (StockDetailResponse) {}
 
