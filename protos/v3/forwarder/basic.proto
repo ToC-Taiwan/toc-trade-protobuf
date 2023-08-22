@@ -35,8 +35,10 @@ message BeatMessage {
 }
 
 message ShioajiUsage {
-    int64 connections = 1;
-    int64 bytes       = 2;
+    int64 connections     = 1;
+    int64 bytes           = 2;
+    int64 limit_bytes     = 3;
+    int64 remaining_bytes = 4;
 }
 
 // StockDetailResponse is the response for stock detail
