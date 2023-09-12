@@ -138,7 +138,7 @@ message StockOrderDetail {
 message OddStockOrderDetail {
     string stock_num = 1;
     double price     = 2;
-    int64 quantity   = 3;
+    int64 share      = 3;
 }
 
 // FutureOrderDetail is the struct for future order detail
