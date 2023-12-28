@@ -2,18 +2,15 @@ syntax            = "proto3";
 option go_package = "./pb";
 package toc_python_forwarder;
 
-// StockNumArr
 message StockNumArr {
     repeated string stock_num_arr = 1;
     bool odd                      = 2;
 }
 
-// FutureNumArr
 message FutureCodeArr {
     repeated string future_code_arr = 1;
 }
 
-// ErrorMssage
 message ErrorMessage {
     string err = 1;
 }

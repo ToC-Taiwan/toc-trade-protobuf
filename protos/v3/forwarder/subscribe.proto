@@ -5,40 +5,19 @@ package toc_python_forwarder;
 import "google/protobuf/empty.proto";
 import "entity.proto";
 
-// SubscribeDataInterface is the interface for subscribe data
 service SubscribeDataInterface {
-    // SubscribeStockTick is the interface for subscribe stock tick
     rpc SubscribeStockTick(StockNumArr) returns (SubscribeResponse) {}
-
-    // UnSubscribeStockTick is the interface for unsubscribe stock tick
     rpc UnSubscribeStockTick(StockNumArr) returns (SubscribeResponse) {}
-
-    // SubscribeStockBidAsk is the interface for subscribe stock bid ask
     rpc SubscribeStockBidAsk(StockNumArr) returns (SubscribeResponse) {}
-
-    // UnSubscribeStockBidAsk is the interface for unsubscribe stock bid ask
     rpc UnSubscribeStockBidAsk(StockNumArr) returns (SubscribeResponse) {}
-
-    // SubscribeFutureTick is the interface for subscribe stock all tick
     rpc SubscribeFutureTick(FutureCodeArr) returns (SubscribeResponse) {}
-
-    // UnSubscribeFutureTick is the interface for unsubscribe stock all tick
     rpc UnSubscribeFutureTick(FutureCodeArr) returns (SubscribeResponse) {}
-
-    // SubscribeFutureBidAsk is the interface for subscribe stock all bid ask
     rpc SubscribeFutureBidAsk(FutureCodeArr) returns (SubscribeResponse) {}
-
-    // UnSubscribeFutureBidAsk is the interface for unsubscribe stock all bid ask
     rpc UnSubscribeFutureBidAsk(FutureCodeArr) returns (SubscribeResponse) {}
-
-    // UnSubscribeAllTick is the interface for unsubscribe stock all tick
     rpc UnSubscribeAllTick(google.protobuf.Empty) returns (ErrorMessage) {}
-
-    // UnSubscribeStockAllBidAsk is the interface for unsubscribe stock all bid ask
     rpc UnSubscribeAllBidAsk(google.protobuf.Empty) returns (ErrorMessage) {}
 }
 
-// SubscribeResponse is the response for subscribe
 message SubscribeResponse {
     repeated string fail_arr = 1;
 }

@@ -2,7 +2,6 @@ syntax            = "proto3";
 option go_package = "./pb";
 package toc_python_forwarder;
 
-// EventMessage is the message type for event
 message EventMessage {
     int64 resp_code   = 1;
     int64 event_code  = 2;
@@ -11,7 +10,6 @@ message EventMessage {
     string event_time = 5;
 }
 
-// StockRealTimeTickMessage is the message type for stock tick
 message StockRealTimeTickMessage {
     string code              = 1;
     string date_time         = 2;
@@ -36,7 +34,6 @@ message StockRealTimeTickMessage {
     bool simtrade            = 21;
 }
 
-// StockRealTimeBidAskMessage is the message type for stock bid ask
 message StockRealTimeBidAskMessage {
     string code                 = 1;
     string date_time            = 2;
@@ -50,7 +47,6 @@ message StockRealTimeBidAskMessage {
     bool simtrade               = 10;
 }
 
-// FutureRealTimeTickMessage is the message type for stock trade
 message FutureRealTimeTickMessage {
     string code              = 1;
     string date_time         = 2;
@@ -73,7 +69,6 @@ message FutureRealTimeTickMessage {
     bool simtrade            = 19;
 }
 
-// FutureRealTimeBidAskMessage is the message type for future bid ask
 message FutureRealTimeBidAskMessage {
     string code                    = 1;
     string date_time               = 2;
@@ -93,12 +88,10 @@ message FutureRealTimeBidAskMessage {
     bool simtrade                  = 16;
 }
 
-// OrderStatusArr is the message type for order status
 message OrderStatusArr {
     repeated OrderStatus data = 1;
 }
 
-// OrderStatus is the message type for order status
 message OrderStatus {
     string status     = 1;
     string code       = 2;

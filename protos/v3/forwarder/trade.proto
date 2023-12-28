@@ -5,79 +5,32 @@ package toc_python_forwarder;
 import "google/protobuf/empty.proto";
 import "entity.proto";
 
-// TradeInterface is the interface for trade service
 service TradeInterface {
-    // BuyStock is the interface for buying stock
     rpc BuyStock(StockOrderDetail) returns (TradeResult) {}
-
-    // SellStock is the interface for selling stock
     rpc SellStock(StockOrderDetail) returns (TradeResult) {}
-
-    // BuyStock is the interface for buying stock
     rpc BuyOddStock(OddStockOrderDetail) returns (TradeResult) {}
-
-    // SellStock is the interface for selling stock
     rpc SellOddStock(OddStockOrderDetail) returns (TradeResult) {}
-
-    // SellFirstStock is the interface for selling first stock
     rpc SellFirstStock(StockOrderDetail) returns (TradeResult) {}
-
-    // CancelStock is the interface for canceling stock
     rpc CancelStock(OrderID) returns (TradeResult) {}
-
-    // BuyFuture is the interface for buying future
     rpc BuyFuture(FutureOrderDetail) returns (TradeResult) {}
-
-    // SellFuture is the interface for selling future
     rpc SellFuture(FutureOrderDetail) returns (TradeResult) {}
-
-    // SellFirstFuture is the interface for selling first future
     rpc SellFirstFuture(FutureOrderDetail) returns (TradeResult) {}
-
-    // CancelFuture is the interface for canceling future
     rpc CancelFuture(FutureOrderID) returns (TradeResult) {}
-
-    // BuyFuture is the interface for buying future
     rpc BuyOption(OptionOrderDetail) returns (TradeResult) {}
-
-    // SellFuture is the interface for selling future
     rpc SellOption(OptionOrderDetail) returns (TradeResult) {}
-
-    // SellFirstFuture is the interface for selling first future
     rpc SellFirstOption(OptionOrderDetail) returns (TradeResult) {}
-
-    // CancelFuture is the interface for canceling future
     rpc CancelOption(OptionOrderID) returns (TradeResult) {}
-
-    // GetLocalOrderStatusArr is the interface for getting local order status array
     rpc GetLocalOrderStatusArr(google.protobuf.Empty) returns (google.protobuf.Empty) {}
-
-    // GetSimulateOrderStatusArr is the interface for getting simulate order status array
     rpc GetSimulateOrderStatusArr(google.protobuf.Empty) returns (google.protobuf.Empty) {}
-
-    // GetOrderStatusByID is the interface for getting order status by id
     rpc GetOrderStatusByID(OrderID) returns (TradeResult) {}
-
-    // GetNonBlockOrderStatusArr is the interface for getting non block order status array
     rpc GetNonBlockOrderStatusArr(google.protobuf.Empty) returns (ErrorMessage) {}
-
-    // GetFuturePosition is the interface for getting future position
     rpc GetFuturePosition(google.protobuf.Empty) returns (FuturePositionArr) {}
-
-    // GetStockPosition is the interface for getting stock position
     rpc GetStockPosition(google.protobuf.Empty) returns (StockPositionArr) {}
-
-    // GetSettlement is the interface for getting settlement
     rpc GetSettlement(google.protobuf.Empty) returns (SettlementList) {}
-
-    // GetAccountBalance is the interface for getting account balance
     rpc GetAccountBalance(google.protobuf.Empty) returns (AccountBalance) {}
-
-    // GetMargin is the interface for getting margin
     rpc GetMargin(google.protobuf.Empty) returns (Margin) {}
 }
 
-// FuturePosition is the struct for future position
 message FuturePosition {
     string code       = 1;
     string direction  = 2;
@@ -87,7 +40,6 @@ message FuturePosition {
     double pnl        = 6;
 }
 
-// FuturePositionArr is the struct for future position array
 message FuturePositionArr {
     repeated FuturePosition position_arr = 1;
 }
@@ -121,12 +73,10 @@ message StockPosition {
     int32 interest               = 13;
 }
 
-// StockPositionArr is the struct for stock position array
 message StockPositionArr {
     repeated StockPosition position_arr = 1;
 }
 
-// StockOrderDetail is the struct for stock order detail
 message StockOrderDetail {
     string stock_num = 1;
     double price     = 2;
@@ -134,14 +84,12 @@ message StockOrderDetail {
     bool simulate    = 4;
 }
 
-// OddStockOrderDetail is the struct for stock order detail
 message OddStockOrderDetail {
     string stock_num = 1;
     double price     = 2;
     int64 share      = 3;
 }
 
-// FutureOrderDetail is the struct for future order detail
 message FutureOrderDetail {
     string code    = 1;
     double price   = 2;
@@ -149,7 +97,6 @@ message FutureOrderDetail {
     bool simulate  = 4;
 }
 
-// OptionOrderDetail is the struct for option order detail
 message OptionOrderDetail {
     string code    = 1;
     double price   = 2;
@@ -157,26 +104,22 @@ message OptionOrderDetail {
     bool simulate  = 4;
 }
 
-// TradeResult is the struct for trade result
 message TradeResult {
     string order_id = 1;
     string status   = 2;
     string error    = 3;
 }
 
-// OrderID is the struct for order id
 message OrderID {
     string order_id = 1;
     bool simulate   = 2;
 }
 
-// FutureOrderID is the struct for future order id
 message FutureOrderID {
     string order_id = 1;
     bool simulate   = 2;
 }
 
-// OptionOrderID is the struct for option order id
 message OptionOrderID {
     string order_id = 1;
     bool simulate   = 2;

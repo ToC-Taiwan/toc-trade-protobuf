@@ -4,31 +4,16 @@ package toc_python_forwarder;
 
 import "google/protobuf/empty.proto";
 
-// BasicDataInterface is the interface for basic data service
 service BasicDataInterface {
-    // CreateLongConnection is the function to create long connection
     rpc CreateLongConnection(stream google.protobuf.Empty) returns (google.protobuf.Empty);
-
-    // Terminate is the terminate function
     rpc Terminate(google.protobuf.Empty) returns (google.protobuf.Empty);
-
-    // CheckUsage get shioaji usage
     rpc CheckUsage(google.protobuf.Empty) returns (ShioajiUsage) {}
-
-    // Login log in
     rpc Login(google.protobuf.Empty) returns (google.protobuf.Empty) {}
-
-    // GetAllStockDetail is the function to get stock detail
     rpc GetAllStockDetail(google.protobuf.Empty) returns (StockDetailResponse) {}
-
-    // GetAllFutureDetail is the function to get future detail
     rpc GetAllFutureDetail(google.protobuf.Empty) returns (FutureDetailResponse) {}
-
-    // GetAllOptionDetail is the function to get option detail
     rpc GetAllOptionDetail(google.protobuf.Empty) returns (OptionDetailResponse) {}
 }
 
-// BeatMessage is the message for heartbeat
 message BeatMessage {
     string message = 1;
     string error   = 2;
@@ -41,22 +26,18 @@ message ShioajiUsage {
     int64 remaining_bytes = 4;
 }
 
-// StockDetailResponse is the response for stock detail
 message StockDetailResponse {
     repeated StockDetailMessage stock = 1;
 }
 
-// FutureDetailResponse is the response for future detail
 message FutureDetailResponse {
     repeated FutureDetailMessage future = 1;
 }
 
-// OptionDetailResponse is the response for option detail
 message OptionDetailResponse {
     repeated OptionDetailMessage option = 1;
 }
 
-// StockDetailMessage is the message for stock detail
 message StockDetailMessage {
     string exchange    = 1;
     string category    = 2;
@@ -67,7 +48,6 @@ message StockDetailMessage {
     string day_trade   = 7;
 }
 
-// FutureDetailMessage is the message for future detail
 message FutureDetailMessage {
     string code            = 1;
     string symbol          = 2;
@@ -83,7 +63,6 @@ message FutureDetailMessage {
     string update_date     = 12;
 }
 
-// OptionDetailMessage is the message for option detail
 message OptionDetailMessage {
     string code            = 1;
     string symbol          = 2;

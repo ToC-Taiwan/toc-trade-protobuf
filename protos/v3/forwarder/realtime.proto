@@ -5,51 +5,31 @@ package toc_python_forwarder;
 import "google/protobuf/empty.proto";
 import "entity.proto";
 
-// RealTimeDataInterface is the interface for real time data
 service RealTimeDataInterface {
-    // GetAllStockSnapshot get all stock snapshot
     rpc GetAllStockSnapshot(google.protobuf.Empty) returns (SnapshotResponse) {}
-
-    // GetStockSnapshotByNumArr get stock snapshot by num array
     rpc GetStockSnapshotByNumArr(StockNumArr) returns (SnapshotResponse) {}
-
-    // GetStockSnapshotTSE get stock snapshot by num array
     rpc GetStockSnapshotTSE(google.protobuf.Empty) returns (SnapshotMessage) {}
-
-    // GetStockSnapshotOTC get stock snapshot by num array
     rpc GetStockSnapshotOTC(google.protobuf.Empty) returns (SnapshotMessage) {}
-
-    // GetNasdaq get stock snapshot by num array
     rpc GetNasdaq(google.protobuf.Empty) returns (YahooFinancePrice) {}
-
-    // GetNasdaqFuture get stock snapshot by num array
     rpc GetNasdaqFuture(google.protobuf.Empty) returns (YahooFinancePrice) {}
-
-    // GetStockVolumeRank get stock volume rank
     rpc GetStockVolumeRank(VolumeRankRequest) returns (StockVolumeRankResponse) {}
-
-    // GetFutureSnapshotByCodeArr get future snapshot by code array
     rpc GetFutureSnapshotByCodeArr(FutureCodeArr) returns (SnapshotResponse) {}
 }
 
-// SnapshotResponse is the response of snapshot
 message SnapshotResponse {
     repeated SnapshotMessage data = 1;
 }
 
-// YahooFinancePrice is the response of yahoo finance price
 message YahooFinancePrice {
     double price = 1;
     double last  = 2;
 }
 
-// VolumeRankRequest is the request of volume rank
 message VolumeRankRequest {
     int64 count = 1;
     string date = 2;
 }
 
-// SnapshotMessage is the message of snapshot
 message SnapshotMessage {
     int64 ts                = 1;
     string code             = 2;
@@ -75,12 +55,10 @@ message SnapshotMessage {
     double volume_ratio     = 22;
 }
 
-// StockVolumeRankResponse is the response of stock volume rank
 message StockVolumeRankResponse {
     repeated StockVolumeRankMessage data = 1;
 }
 
-// StockVolumeRankMessage is the message of stock volume rank
 message StockVolumeRankMessage {
     string date            = 1;
     string code            = 2;
