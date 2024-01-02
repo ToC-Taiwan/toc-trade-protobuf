@@ -88,16 +88,23 @@ message FutureRealTimeBidAskMessage {
     bool simtrade                  = 16;
 }
 
+enum OrderType {
+    TYPE_STOCK_LOT   = 0;
+    TYPE_STOCK_SHARE = 1;
+    TYPE_FUTURE      = 2;
+}
+
 message OrderStatusArr {
     repeated OrderStatus data = 1;
 }
 
 message OrderStatus {
-    string status     = 1;
-    string code       = 2;
-    string action     = 3;
-    double price      = 4;
-    int64 quantity    = 5;
-    string order_id   = 6;
-    string order_time = 7;
+    OrderType type    = 1;
+    string status     = 2;
+    string code       = 3;
+    string action     = 4;
+    double price      = 5;
+    int64 quantity    = 6;
+    string order_id   = 7;
+    string order_time = 8;
 }
