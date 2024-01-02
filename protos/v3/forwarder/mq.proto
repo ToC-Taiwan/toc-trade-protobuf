@@ -89,9 +89,9 @@ message FutureRealTimeBidAskMessage {
 }
 
 enum OrderType {
-    TYPE_STOCK_LOT   = 0;
-    TYPE_STOCK_SHARE = 1;
-    TYPE_FUTURE      = 2;
+    TYPE_STOCK_LOT   = 1;
+    TYPE_STOCK_SHARE = 2;
+    TYPE_FUTURE      = 3;
 }
 
 message OrderStatusArr {
