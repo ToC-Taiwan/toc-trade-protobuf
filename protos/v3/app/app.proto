@@ -123,3 +123,8 @@ message Kbar {
     double low       = 5;
     int64 volume     = 6;
 }
+
+message PickRealList {
+    repeated string stock_list  = 1;
+    repeated string remove_list = 2;
+}
