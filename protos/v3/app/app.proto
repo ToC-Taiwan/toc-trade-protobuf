@@ -128,7 +128,7 @@ message Kbar {
 }
 
 message PickRealList {
-    repeated string stock_list  = 1;
+    repeated string add_list    = 1;
     repeated string remove_list = 2;
 }
 
