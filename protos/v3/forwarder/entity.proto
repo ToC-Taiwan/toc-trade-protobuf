@@ -1,6 +1,6 @@
 syntax            = "proto3";
 option go_package = "./pb";
-package toc_python_forwarder;
+package forwarder;
 
 message StockNumArr {
     repeated string stock_num_arr = 1;

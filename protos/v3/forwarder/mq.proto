@@ -1,6 +1,6 @@
 syntax            = "proto3";
 option go_package = "./pb";
-package toc_python_forwarder;
+package forwarder;
 
 message EventMessage {
     int64 resp_code   = 1;

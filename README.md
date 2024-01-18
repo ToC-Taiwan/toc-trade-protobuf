@@ -9,20 +9,25 @@ mkdir .vscode
 home_path="$HOME"
 echo '{
     "protoc": {
-        "path": "'$home_path'/sdk_tools/protoc/bin/protoc",
+        "path": "/Users/timhsu/sdk_tools/protoc/bin/protoc",
         "compile_on_save": false,
         "options": [
-            "--proto_path=protos/v3/app",
-            "--proto_path=protos/v3/basic",
-            "--proto_path=protos/v3/common",
-            "--proto_path=protos/v3/health",
-            "--proto_path=protos/v3/history",
-            "--proto_path=protos/v3/stream",
-            "--proto_path=protos/v3/trade",
+            "--proto_path=protos/v3",
             "--python_out=gen/python",
-            "--go_out=gen/go",
-            "--python_out=gen/python"
+            "--go_out=gen/go"
         ]
     }
-}' > .vscode/settings.json
+}
+' > .vscode/settings.json
 ```
+
+## Install Python protobuf
+
+```sh
+make venv
+pip3 install -U \
+  --no-warn-script-location \
+  --no-cache-dir \
+  grpcio \
+  grpcio-tools
+``````

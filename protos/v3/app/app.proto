@@ -1,6 +1,9 @@
 syntax = "proto3";
-package sinopac_forwarder;
+package app;
 option go_package = "./pb";
+
+import "forwarder/realtime.proto";
+import "forwarder/mq.proto";
 
 enum WSType {
     TYPE_FUTURE_TICK     = 0;
@@ -127,4 +130,11 @@ message Kbar {
 message PickRealList {
     repeated string stock_list  = 1;
     repeated string remove_list = 2;
+}
+
+message WSPickRealMessage {
+    oneof data {
+        forwarder.SnapshotResponse snapshots    = 1;
+        forwarder.StockRealTimeTickMessage tick = 2;
+    }
 }

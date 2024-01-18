@@ -1,9 +1,9 @@
 syntax            = "proto3";
 option go_package = "./pb";
-package toc_python_forwarder;
+package forwarder;
 
 import "google/protobuf/empty.proto";
-import "entity.proto";
+import "forwarder/entity.proto";
 
 service TradeInterface {
     rpc BuyStock(StockOrderDetail) returns (TradeResult) {}

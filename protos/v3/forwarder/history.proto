@@ -1,6 +1,6 @@
 syntax            = "proto3";
 option go_package = "./pb";
-package toc_python_forwarder;
+package forwarder;
 
 service HistoryDataInterface {
     rpc GetStockHistoryTick(StockNumArrWithDate) returns (HistoryTickResponse) {}
