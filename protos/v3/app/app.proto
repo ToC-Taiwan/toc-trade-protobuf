@@ -132,8 +132,8 @@ enum PickListType {
     TYPE_REMOVE = 1;
 }
 
-message PickRealList {
-    map<string, PickListType> pick_list = 1;
+message PickRealMap {
+    map<string, PickListType> pick_map = 1;
 }
 
 message WSPickRealMessage {
