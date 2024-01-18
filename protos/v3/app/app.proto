@@ -2,9 +2,6 @@ syntax = "proto3";
 package app;
 option go_package = "./pb";
 
-import "forwarder/realtime.proto";
-import "forwarder/mq.proto";
-
 enum WSType {
     TYPE_FUTURE_TICK     = 0;
     TYPE_FUTURE_ORDER    = 1;
@@ -134,11 +131,4 @@ enum PickListType {
 
 message PickRealMap {
     map<string, PickListType> pick_map = 1;
-}
-
-message WSPickRealMessage {
-    oneof data {
-        forwarder.SnapshotResponse snapshots    = 1;
-        forwarder.StockRealTimeTickMessage tick = 2;
-    }
 }
