@@ -127,9 +127,13 @@ message Kbar {
     int64 volume     = 6;
 }
 
+enum PickListType {
+    TYPE_ADD    = 0;
+    TYPE_REMOVE = 1;
+}
+
 message PickRealList {
-    repeated string add_list    = 1;
-    repeated string remove_list = 2;
+    map<string, PickListType> pick_list = 1;
 }
 
 message WSPickRealMessage {
