@@ -80,6 +80,7 @@ message WSFutureTick {
     int64 chg_type           = 16;
     double price_chg         = 17;
     double pct_chg           = 18;
+    int64 combo_count        = 19;
 }
 
 message WSTradeIndex {
