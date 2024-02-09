@@ -58,23 +58,38 @@ message FuturePositionArr {
 // short_sale_margin (int): short_sale_margin
 // interest (int): interest
 message StockPosition {
-    int32 id                     = 1;
-    string code                  = 2;
-    string direction             = 3;
-    int32 quantity               = 4;
-    double price                 = 5;
-    double last_price            = 6;
-    double pnl                   = 7;
-    int32 yd_quantity            = 8;
-    string cond                  = 9;
-    int32 margin_purchase_amount = 10;
-    int32 collateral             = 11;
-    int32 short_sale_margin      = 12;
-    int32 interest               = 13;
+    int32 id                                = 1;
+    string code                             = 2;
+    string direction                        = 3;
+    int32 quantity                          = 4;
+    double price                            = 5;
+    double last_price                       = 6;
+    double pnl                              = 7;
+    int32 yd_quantity                       = 8;
+    string cond                             = 9;
+    int32 margin_purchase_amount            = 10;
+    int32 collateral                        = 11;
+    int32 short_sale_margin                 = 12;
+    int32 interest                          = 13;
+    repeated StockPositionDetail detail_arr = 14;
 }
 
 message StockPositionArr {
     repeated StockPosition position_arr = 1;
+}
+
+// StockPositionDetail(date = '2024-01-04', code = '2344', quantity = 0, price = 147.0, last_price = 134.0, dseq = 'IC320', direction = <Action.Buy: 'Buy'>, pnl = -13.0, currency = <Currency.TWD: 'TWD'>, fee = 1.0)
+message StockPositionDetail {
+    string date       = 1;
+    string code       = 2;
+    int32 quantity    = 3;
+    double price      = 4;
+    double last_price = 5;
+    string dseq       = 6;
+    string direction  = 7;
+    double pnl        = 8;
+    string currency   = 9;
+    double fee        = 10;
 }
 
 message StockOrderDetail {
