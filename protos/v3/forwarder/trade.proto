@@ -57,6 +57,7 @@ message FuturePositionArr {
 // collateral (int): collateral
 // short_sale_margin (int): short_sale_margin
 // interest (int): interest
+// StockPosition(id = 0, code = '2344', direction = <Action.Buy: 'Buy'>, quantity = 10, price = 28.3, last_price = 27.1, pnl = -15.0, yd_quantity = 10, margin_purchase_amount = 0, collateral = 0, short_sale_margin = 0, interest = 0)
 message StockPosition {
     int32 id                                = 1;
     string code                             = 2;
