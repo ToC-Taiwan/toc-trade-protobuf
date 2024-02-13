@@ -6,13 +6,7 @@ service HistoryDataInterface {
     rpc GetStockHistoryTick(StockNumArrWithDate) returns (HistoryTickResponse) {}
     rpc GetStockHistoryKbar(StockNumArrWithDate) returns (HistoryKbarResponse) {}
     rpc GetStockHistoryClose(StockNumArrWithDate) returns (HistoryCloseResponse) {}
-    rpc GetStockHistoryCloseByDateArr(StockNumArrWithDateArr) returns (HistoryCloseResponse) {}
-    rpc GetFutureHistoryTick(FutureCodeArrWithDate) returns (HistoryTickResponse) {}
     rpc GetFutureHistoryKbar(FutureCodeArrWithDate) returns (HistoryKbarResponse) {}
-    rpc GetFutureHistoryClose(FutureCodeArrWithDate) returns (HistoryCloseResponse) {}
-    rpc GetStockTSEHistoryTick(Date) returns (HistoryTickResponse) {}
-    rpc GetStockTSEHistoryKbar(Date) returns (HistoryKbarResponse) {}
-    rpc GetStockTSEHistoryClose(Date) returns (HistoryCloseResponse) {}
 }
 
 message StockNumArrWithDate {

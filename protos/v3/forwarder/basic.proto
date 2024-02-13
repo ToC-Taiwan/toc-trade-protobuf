@@ -6,7 +6,6 @@ import "google/protobuf/empty.proto";
 
 service BasicDataInterface {
     rpc CreateLongConnection(stream google.protobuf.Empty) returns (google.protobuf.Empty);
-    rpc Terminate(google.protobuf.Empty) returns (google.protobuf.Empty);
     rpc CheckUsage(google.protobuf.Empty) returns (ShioajiUsage) {}
     rpc Login(google.protobuf.Empty) returns (google.protobuf.Empty) {}
     rpc GetAllStockDetail(google.protobuf.Empty) returns (StockDetailResponse) {}
