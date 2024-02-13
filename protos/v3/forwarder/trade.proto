@@ -3,7 +3,6 @@ option go_package = "./pb";
 package forwarder;
 
 import "google/protobuf/empty.proto";
-import "forwarder/entity.proto";
 
 service TradeInterface {
     rpc BuyStock(StockOrderDetail) returns (TradeResult) {}
@@ -22,8 +21,6 @@ service TradeInterface {
     rpc CancelOption(OptionOrderID) returns (TradeResult) {}
     rpc GetLocalOrderStatusArr(google.protobuf.Empty) returns (google.protobuf.Empty) {}
     rpc GetSimulateOrderStatusArr(google.protobuf.Empty) returns (google.protobuf.Empty) {}
-    rpc GetOrderStatusByID(OrderID) returns (TradeResult) {}
-    rpc GetNonBlockOrderStatusArr(google.protobuf.Empty) returns (ErrorMessage) {}
     rpc GetFuturePosition(google.protobuf.Empty) returns (FuturePositionArr) {}
     rpc GetStockPosition(google.protobuf.Empty) returns (StockPositionArr) {}
     rpc GetSettlement(google.protobuf.Empty) returns (SettlementList) {}
