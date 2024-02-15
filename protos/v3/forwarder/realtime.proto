@@ -8,8 +8,8 @@ import "forwarder/entity.proto";
 service RealTimeDataInterface {
     rpc GetAllStockSnapshot(google.protobuf.Empty) returns (SnapshotResponse) {}
     rpc GetStockSnapshotByNumArr(StockNumArr) returns (SnapshotResponse) {}
-    rpc GetStockSnapshotTSE(google.protobuf.Empty) returns (SnapshotMessage) {}
-    rpc GetStockSnapshotOTC(google.protobuf.Empty) returns (SnapshotMessage) {}
+    rpc GetStockSnapshotTSE(google.protobuf.Empty) returns (SnapshotResponse) {}
+    rpc GetStockSnapshotOTC(google.protobuf.Empty) returns (SnapshotResponse) {}
     rpc GetNasdaq(google.protobuf.Empty) returns (YahooFinancePrice) {}
     rpc GetNasdaqFuture(google.protobuf.Empty) returns (YahooFinancePrice) {}
     rpc GetStockVolumeRank(VolumeRankRequest) returns (StockVolumeRankResponse) {}
