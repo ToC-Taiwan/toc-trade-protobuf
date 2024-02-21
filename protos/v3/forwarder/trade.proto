@@ -5,20 +5,18 @@ package forwarder;
 import "google/protobuf/empty.proto";
 
 service TradeInterface {
+    rpc CancelOrder(OrderID) returns (TradeResult) {}
     rpc BuyStock(StockOrderDetail) returns (TradeResult) {}
     rpc SellStock(StockOrderDetail) returns (TradeResult) {}
     rpc BuyOddStock(OddStockOrderDetail) returns (TradeResult) {}
     rpc SellOddStock(OddStockOrderDetail) returns (TradeResult) {}
     rpc SellFirstStock(StockOrderDetail) returns (TradeResult) {}
-    rpc CancelStock(OrderID) returns (TradeResult) {}
     rpc BuyFuture(FutureOrderDetail) returns (TradeResult) {}
     rpc SellFuture(FutureOrderDetail) returns (TradeResult) {}
     rpc SellFirstFuture(FutureOrderDetail) returns (TradeResult) {}
-    rpc CancelFuture(FutureOrderID) returns (TradeResult) {}
     rpc BuyOption(OptionOrderDetail) returns (TradeResult) {}
     rpc SellOption(OptionOrderDetail) returns (TradeResult) {}
     rpc SellFirstOption(OptionOrderDetail) returns (TradeResult) {}
-    rpc CancelOption(OptionOrderID) returns (TradeResult) {}
     rpc GetLocalOrderStatusArr(google.protobuf.Empty) returns (google.protobuf.Empty) {}
     rpc GetSimulateOrderStatusArr(google.protobuf.Empty) returns (google.protobuf.Empty) {}
     rpc GetFuturePosition(google.protobuf.Empty) returns (FuturePositionArr) {}
@@ -124,16 +122,6 @@ message TradeResult {
 }
 
 message OrderID {
-    string order_id = 1;
-    bool simulate   = 2;
-}
-
-message FutureOrderID {
-    string order_id = 1;
-    bool simulate   = 2;
-}
-
-message OptionOrderID {
     string order_id = 1;
     bool simulate   = 2;
 }
