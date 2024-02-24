@@ -15,6 +15,10 @@ message PickRealMap {
     map<string, PickListType> pick_map = 1;
 }
 
+message PickFuture {
+    string code = 1;
+}
+
 message WSMessage {
     oneof data {
         forwarder.FutureDetailMessage future_detail     = 1;
