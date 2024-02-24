@@ -2,128 +2,9 @@ syntax = "proto3";
 package app;
 option go_package = "./pb";
 
-enum WSType {
-    TYPE_FUTURE_TICK     = 0;
-    TYPE_FUTURE_ORDER    = 1;
-    TYPE_TRADE_INDEX     = 2;
-    TYPE_FUTURE_POSITION = 3;
-    TYPE_ASSIST_STATUS   = 4;
-    TYPE_ERR_MESSAGE     = 5;
-    TYPE_KBAR_ARR        = 6;
-    TYPE_FUTURE_DETAIL   = 7;
-}
-
-message WSMessage {
-    WSType type = 1;
-    oneof data {
-        WSFutureTick future_tick          = 2;
-        WSFutureOrder future_order        = 3;
-        WSTradeIndex trade_index          = 5;
-        WSFuturePosition future_position  = 6;
-        WSAssitStatus assit_status        = 7;
-        WSErrMessage err_message          = 8;
-        WSHistoryKbarMessage history_kbar = 9;
-        WSFutureDetail future_detail      = 10;
-    }
-}
-
-message WSFutureDetail {
-    string code            = 1;
-    string symbol          = 2;
-    string name            = 3;
-    string category        = 4;
-    string delivery_month  = 5;
-    string delivery_date   = 6;
-    string underlying_kind = 7;
-    int64 unit             = 8;
-    double limit_up        = 9;
-    double limit_down      = 10;
-    double reference       = 11;
-    string update_date     = 12;
-}
-
-message WSErrMessage {
-    int64 err_code  = 1;
-    string response = 2;
-}
-
-message WSFutureOrder {
-    string code        = 1;
-    WSOrder base_order = 2;
-}
-
-message WSOrder {
-    string order_id   = 1;
-    int64 status      = 2;
-    string order_time = 3;
-    int64 action      = 4;
-    double price      = 5;
-    int64 quantity    = 6;
-}
-
-message WSFutureTick {
-    string code              = 1;
-    string tick_time         = 2;
-    double open              = 3;
-    double underlying_price  = 4;
-    int64 bid_side_total_vol = 5;
-    int64 ask_side_total_vol = 6;
-    double avg_price         = 7;
-    double close             = 8;
-    double high              = 9;
-    double low               = 10;
-    double amount            = 11;
-    double total_amount      = 12;
-    int64 volume             = 13;
-    int64 total_volume       = 14;
-    int64 tick_type          = 15;
-    int64 chg_type           = 16;
-    double price_chg         = 17;
-    double pct_chg           = 18;
-    int64 combo_count        = 19;
-}
-
-message WSTradeIndex {
-    WSIndexStatus tse    = 1;
-    WSIndexStatus otc    = 2;
-    WSIndexStatus nasdaq = 3;
-    WSIndexStatus nf     = 4;
-}
-
-message WSIndexStatus {
-    int64 break_count = 1;
-    double price_chg  = 2;
-}
-
-message WSFuturePosition {
-    repeated Position position = 1;
-}
-
-message Position {
-    string code       = 1;
-    string direction  = 2;
-    int64 quantity    = 3;
-    double price      = 4;
-    double last_price = 5;
-    double pnl        = 6;
-}
-
-message WSAssitStatus {
-    bool running = 1;
-}
-
-message WSHistoryKbarMessage {
-    repeated Kbar arr = 1;
-}
-
-message Kbar {
-    string kbar_time = 1;
-    double open      = 2;
-    double high      = 3;
-    double close     = 4;
-    double low       = 5;
-    int64 volume     = 6;
-}
+import "forwarder/history.proto";
+import "forwarder/basic.proto";
+import "forwarder/mq.proto";
 
 enum PickListType {
     TYPE_ADD    = 0;
@@ -132,4 +13,25 @@ enum PickListType {
 
 message PickRealMap {
     map<string, PickListType> pick_map = 1;
+}
+
+message WSMessage {
+    oneof data {
+        forwarder.FutureDetailMessage future_detail     = 1;
+        forwarder.FutureRealTimeTickMessage future_tick = 2;
+        forwarder.HistoryKbarResponse history_kbar      = 3;
+        TradeIndex trade_index                          = 4;
+    }
+}
+
+message TradeIndex {
+    IndexStatus tse    = 1;
+    IndexStatus otc    = 2;
+    IndexStatus nasdaq = 3;
+    IndexStatus nf     = 4;
+}
+
+message IndexStatus {
+    int64 break_count = 1;
+    double price_chg  = 2;
 }
