@@ -3,6 +3,7 @@ package app;
 option go_package = "./pb";
 
 import "forwarder/history.proto";
+import "forwarder/realtime.proto";
 import "forwarder/basic.proto";
 import "forwarder/mq.proto";
 
@@ -24,7 +25,8 @@ message WSMessage {
         forwarder.FutureDetailMessage future_detail     = 1;
         forwarder.FutureRealTimeTickMessage future_tick = 2;
         forwarder.HistoryKbarResponse history_kbar      = 3;
-        TradeIndex trade_index                          = 4;
+        forwarder.SnapshotMessage snapshot              = 4;
+        TradeIndex trade_index                          = 5;
     }
 }
 
