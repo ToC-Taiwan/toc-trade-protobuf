@@ -1,4 +1,4 @@
-module gitlab.com/moxa/nbg/nsd/mxview-one-panel-protobuf
+module github.com/toc-taiwan/toc-trade-protobuf
 
 go 1.22.3
 
