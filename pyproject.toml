@@ -1,0 +1,23 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "toc-trade-pb"
+version = "0.1.0"
+authors = [{ name = "Tim Hsu", email = "maochindada@gmail.com" }]
+description = "Pre-compiled Python protobuf files for ToC Trade"
+readme = "README.md"
+requires-python = ">=3.11"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/python/toc_trade_pb/app", "src/python/toc_trade_pb/forwarder"]
+
+[project.urls]
+Homepage = "https://github.com/ToC-Taiwan/toc-trade-protobuf"
+Issues = "https://github.com/ToC-Taiwan/toc-trade-protobuf/issues"

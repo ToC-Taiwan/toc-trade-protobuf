@@ -47,12 +47,16 @@ message FuturePositionArr {
 // last_price (float): last price
 // pnl (float): unrealized profit
 // yd_quantity (int): yesterday
-// cond (StockOrderCond): Default Cash {Cash(現股), Netting(餘額交割), MarginTrading(融資),ShortSelling(融券), Emerging(興櫃)}
+// cond (StockOrderCond): Default Cash {Cash(現股), Netting(餘額交割),
+// MarginTrading(融資),ShortSelling(融券), Emerging(興櫃)}
 // margin_purchase_amount (int): margin_purchase_amount
 // collateral (int): collateral
 // short_sale_margin (int): short_sale_margin
 // interest (int): interest
-// StockPosition(id = 0, code = '2344', direction = <Action.Buy: 'Buy'>, quantity = 10, price = 28.3, last_price = 27.1, pnl = -15.0, yd_quantity = 10, margin_purchase_amount = 0, collateral = 0, short_sale_margin = 0, interest = 0)
+// StockPosition(id = 0, code = '2344', direction = <Action.Buy: 'Buy'>,
+// quantity = 10, price = 28.3, last_price = 27.1, pnl = -15.0, yd_quantity =
+// 10, margin_purchase_amount = 0, collateral = 0, short_sale_margin = 0,
+// interest = 0)
 message StockPosition {
     int32 id                                = 1;
     string code                             = 2;
@@ -74,7 +78,9 @@ message StockPositionArr {
     repeated StockPosition position_arr = 1;
 }
 
-// StockPositionDetail(date = '2024-01-04', code = '2344', quantity = 0, price = 147.0, last_price = 134.0, dseq = 'IC320', direction = <Action.Buy: 'Buy'>, pnl = -13.0, currency = <Currency.TWD: 'TWD'>, fee = 1.0)
+// StockPositionDetail(date = '2024-01-04', code = '2344', quantity = 0, price =
+// 147.0, last_price = 134.0, dseq = 'IC320', direction = <Action.Buy: 'Buy'>,
+// pnl = -13.0, currency = <Currency.TWD: 'TWD'>, fee = 1.0)
 message StockPositionDetail {
     string date       = 1;
     string code       = 2;

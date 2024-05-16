@@ -1,6 +1,6 @@
-syntax = "proto3";
-package app;
+syntax            = "proto3";
 option go_package = "./pb";
+package app;
 
 import "forwarder/history.proto";
 import "forwarder/realtime.proto";
