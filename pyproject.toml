@@ -3,8 +3,8 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "toc-trade-pb"
-version = "0.1.0"
+name = "toc-trade-pb-v2"
+version = "0.1.4"
 authors = [{ name = "Tim Hsu", email = "maochindada@gmail.com" }]
 description = "Pre-compiled Python protobuf files for ToC Trade"
 readme = "README.md"
@@ -16,7 +16,11 @@ classifiers = [
 ]
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/python/toc_trade_pb/app", "src/python/toc_trade_pb/forwarder"]
+packages = [
+    "src/python/toc_trade_pb",
+    "src/python/toc_trade_pb/app",
+    "src/python/toc_trade_pb/forwarder",
+]
 
 [project.urls]
 Homepage = "https://github.com/ToC-Taiwan/toc-trade-protobuf"

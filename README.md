@@ -1,9 +1,5 @@
 # TOC TRADE PROTOBUF
 
-## VScode setting
-
-- cp settings.template.json .vscode/settings.json
-
 ## VScode settings
 
 ```json

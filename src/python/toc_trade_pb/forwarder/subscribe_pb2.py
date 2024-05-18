@@ -13,7 +13,7 @@ _sym_db = _symbol_database.Default()
 
 
 from google.protobuf import empty_pb2 as google_dot_protobuf_dot_empty__pb2
-from forwarder import entity_pb2 as forwarder_dot_entity__pb2
+from toc_trade_pb.forwarder import entity_pb2 as forwarder_dot_entity__pb2
 
 
 DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x19\x66orwarder/subscribe.proto\x12\tforwarder\x1a\x1bgoogle/protobuf/empty.proto\x1a\x16\x66orwarder/entity.proto\"%\n\x11SubscribeResponse\x12\x10\n\x08\x66\x61il_arr\x18\x01 \x03(\t2\xb8\x06\n\x16SubscribeDataInterface\x12L\n\x12SubscribeStockTick\x12\x16.forwarder.StockNumArr\x1a\x1c.forwarder.SubscribeResponse\"\x00\x12N\n\x14UnSubscribeStockTick\x12\x16.forwarder.StockNumArr\x1a\x1c.forwarder.SubscribeResponse\"\x00\x12N\n\x14SubscribeStockBidAsk\x12\x16.forwarder.StockNumArr\x1a\x1c.forwarder.SubscribeResponse\"\x00\x12P\n\x16UnSubscribeStockBidAsk\x12\x16.forwarder.StockNumArr\x1a\x1c.forwarder.SubscribeResponse\"\x00\x12O\n\x13SubscribeFutureTick\x12\x18.forwarder.FutureCodeArr\x1a\x1c.forwarder.SubscribeResponse\"\x00\x12Q\n\x15UnSubscribeFutureTick\x12\x18.forwarder.FutureCodeArr\x1a\x1c.forwarder.SubscribeResponse\"\x00\x12Q\n\x15SubscribeFutureBidAsk\x12\x18.forwarder.FutureCodeArr\x1a\x1c.forwarder.SubscribeResponse\"\x00\x12S\n\x17UnSubscribeFutureBidAsk\x12\x18.forwarder.FutureCodeArr\x1a\x1c.forwarder.SubscribeResponse\"\x00\x12G\n\x12UnSubscribeAllTick\x12\x16.google.protobuf.Empty\x1a\x17.forwarder.ErrorMessage\"\x00\x12I\n\x14UnSubscribeAllBidAsk\x12\x16.google.protobuf.Empty\x1a\x17.forwarder.ErrorMessage\"\x00\x42\x06Z\x04./pbb\x06proto3')

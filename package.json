@@ -1,0 +1,29 @@
+{
+  "name": "toc-trade-protobuf",
+  "version": "0.1.0",
+  "description": "pre-compiled protobuf",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ToC-Taiwan/toc-trade-protobuf.git"
+  },
+  "keywords": [
+    "protobuf"
+  ],
+  "author": "Tim Hsu",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ToC-Taiwan/toc-trade-protobuf/issues"
+  },
+  "homepage": "https://github.com/ToC-Taiwan/toc-trade-protobuf#readme",
+  "dependencies": {
+    "@types/google-protobuf": "^3.15.12",
+    "google-protobuf": "^3.21.2"
+  }
+}

@@ -3,7 +3,7 @@
 import grpc
 import warnings
 
-from forwarder import trade_pb2 as forwarder_dot_trade__pb2
+from toc_trade_pb.forwarder import trade_pb2 as forwarder_dot_trade__pb2
 from google.protobuf import empty_pb2 as google_dot_protobuf_dot_empty__pb2
 
 GRPC_GENERATED_VERSION = '1.63.0'
