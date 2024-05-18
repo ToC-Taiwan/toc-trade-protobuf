@@ -1,6 +1,8 @@
 PYTHON=$(shell which python3)
 PIP=$(shell which pip3)
 
+compile: compile-go compile-py compile-ts
+
 compile-go:
 	@rm -rf src/golang && mkdir -p src/golang
 	@protoc \
