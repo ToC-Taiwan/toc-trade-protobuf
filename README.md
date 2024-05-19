@@ -1,5 +1,7 @@
 # TOC TRADE PROTOBUF
 
+[![LICENSE](https://img.shields.io/github/license/ToC-Taiwan/toc-trade-protobuf?style=for-the-badge)](LICENSE)
+
 ## VScode settings
 
 ```json
