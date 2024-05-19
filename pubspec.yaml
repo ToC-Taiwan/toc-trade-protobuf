@@ -1,6 +1,6 @@
 name: toc_trade_protobuf
 description: "Pre-compiled protobuf for dart"
-version: "0.1.9"
+version: "0.1.10"
 
 environment:
   sdk: ">=3.4.0 <4.0.0"
