@@ -1,5 +1,21 @@
 # CHANGELOG
 
+## [v0.1.9](https://github.com/ToC-Taiwan/toc-machine-trading-fe/compare/v0.1.7...v0.1.9)
+
+> 2024-05-20
+
+### Code Refactoring (1)
+
+* split layout by language
+
+## [v0.1.7](https://github.com/ToC-Taiwan/toc-machine-trading-fe/compare/v0.1.4...v0.1.7)
+
+> 2024-05-19
+
+### Features (1)
+
+* add dart pre-compiled files
+
 ## [v0.1.4](https://github.com/ToC-Taiwan/toc-machine-trading-fe/compare/v0.1.0...v0.1.4)
 
 > 2024-05-18
