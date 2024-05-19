@@ -39,7 +39,7 @@ brew install git-chglog
 ```
 
 ```sh
-COMMIT_HASH=06b7f9b9def32e770d980ac3ba2e5177333441c9
+COMMIT_HASH=47f8c8bd2c7305721c6fa3a495c8869c9aec735d
 VERSION=0.1.10
 git tag -a v$VERSION $COMMIT_HASH -m $VERSION
 git-chglog -o CHANGELOG.md

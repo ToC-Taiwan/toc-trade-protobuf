@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## [v0.1.10](https://github.com/ToC-Taiwan/toc-machine-trading-fe/compare/v0.1.9...v0.1.10)
+
+> 2024-05-20
+
 ## [v0.1.9](https://github.com/ToC-Taiwan/toc-machine-trading-fe/compare/v0.1.7...v0.1.9)
 
 > 2024-05-20
