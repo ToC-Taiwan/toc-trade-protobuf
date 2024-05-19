@@ -2,3 +2,4 @@
 venv
 dist
 node_modules
+.dart_tool/

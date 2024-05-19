@@ -1,16 +1,27 @@
 PYTHON=$(shell which python3)
 PIP=$(shell which pip3)
+PROTOC_PATH=$(shell which protoc)
+PROTOC_INCLUDE_PATH=$(shell dirname $(shell dirname "$(PROTOC_PATH)"))
 
-compile: compile-go compile-py compile-ts
+compile: compile-go compile-py compile-ts compile-dart
 
 compile-go:
 	@rm -rf src/golang && mkdir -p src/golang
-	@protoc \
+	@$(PROTOC_PATH) \
 	--go_out=src/golang \
 	--go-grpc_out=src/golang \
 	--proto_path=protos/v3 \
 	./protos/v3/*/*.proto
 	@. ./scripts/gomod_update.sh
+
+compile-dart:
+	@rm -rf lib && mkdir -p lib
+	@dart pub global activate --overwrite protoc_plugin
+	@$(PROTOC_PATH) \
+	--dart_out=lib \
+	--proto_path=protos/v3 \
+	./protos/v3/*/*.proto \
+	$(PROTOC_INCLUDE_PATH)/include/google/protobuf/empty.proto
 
 compile-py: check
 	@rm -rf src/python/toc_trade_pb && mkdir -p src/python/toc_trade_pb
@@ -27,7 +38,7 @@ compile-py: check
 
 compile-ts:
 	@rm -rf src/ts && mkdir -p src/ts
-	@protoc \
+	@$(PROTOC_PATH) \
 	--proto_path=protos/v3 \
     --ts_opt=no_grpc \
     --ts_opt=no_namespace \
